@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Ethan&#x27;s Portfolio</title>
+	<subtitle>A website to show off my projects and aspirations.</subtitle>
+	<link href="https://https://syst3mz.github.io/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://https://syst3mz.github.io/"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2023-01-23T00:00:00+00:00</updated>
+	<id>https://https://syst3mz.github.io/atom.xml</id>
+	<entry xml:lang="en">
+		<title>LALR Parser Generator</title>
+		<published>2023-01-23T00:00:00+00:00</published>
+		<updated>2023-01-23T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://https://syst3mz.github.io/lalr-generator/" type="text/html"/>
+		<id>https://https://syst3mz.github.io/lalr-generator/</id>
+		<content type="html">&lt;p&gt;Nybble&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Nimbus</title>
+		<published>2023-01-16T00:00:00+00:00</published>
+		<updated>2023-01-16T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://https://syst3mz.github.io/nimbus/" type="text/html"/>
+		<id>https://https://syst3mz.github.io/nimbus/</id>
+		<content type="html">&lt;h1 id=&quot;nimbus&quot;&gt;Nimbus&lt;&#x2F;h1&gt;
+&lt;p&gt;Nimbus is an interpreted multi-paradigm general purpose programming language that I am developing.&lt;&#x2F;p&gt;
+&lt;p&gt;Nimbus is designed to be the fastest programming language to write code in, and will make sacrifices in all other areas 
+to meet that goal. I am writing it to increase my productivity as a programmer and as a learning experience.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;planned-features&quot;&gt;Planned Features&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;garbage-collection&quot;&gt;Garbage Collection&lt;&#x2F;h3&gt;
+&lt;p&gt;Using a well understood Mark-Sweep approach to garbage collection, I can reduce mental overhead when solving problems.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;multiple-inheritance&quot;&gt;Multiple Inheritance&lt;&#x2F;h3&gt;
+&lt;p&gt;While problems like the well studied &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Multiple_inheritance#:~:text=The%20%22diamond%20problem%22%20(sometimes,from%20both%20B%20and%20C.&quot;&gt;diamond problem&lt;&#x2F;a&gt;
+exist, it is my opinion that the increase of re-usability in code that multiple inheritance can provide is well worth it.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;function-level-structural-subtyping-duck-typing&quot;&gt;Function Level Structural Subtyping (Duck-Typing)&lt;&#x2F;h3&gt;
+&lt;p&gt;While multiple inheritance can cover a lot, I feel that allowing functions to explicitly define what they need to work 
+will allow a massive increase in re-usability.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;tagged-enums&quot;&gt;Tagged Enums&lt;&#x2F;h3&gt;
+&lt;p&gt;Ripped straight from rust, they allow much more expressive and correct code.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;gradual-correctness&quot;&gt;Gradual Correctness&lt;&#x2F;h3&gt;
+&lt;p&gt;The Nimbus interpreter will have multiple modes, each more strict than the last. Allow the computer to the hard work of 
+finding bugs, free up the human to fix them.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;stages&quot;&gt;Stages&lt;&#x2F;h2&gt;
+&lt;p&gt;To accomplish the herculean task of writing my own programming language, I have split up the challenges into the 
+following phases (loosely following the architecture of a compiler).&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Lexical analysis&lt;&#x2F;li&gt;
+&lt;li&gt;Parsing&lt;&#x2F;li&gt;
+&lt;li&gt;Reasonable type inference&lt;&#x2F;li&gt;
+&lt;li&gt;Optimization&lt;&#x2F;li&gt;
+&lt;li&gt;Interpretation&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;progress&quot;&gt;Progress&lt;&#x2F;h2&gt;
+&lt;p&gt;Well, its a work in... Right now I am working on making a &lt;a href=&quot;https:&#x2F;&#x2F;https:&#x2F;&#x2F;syst3mz.github.io&#x2F;lalr-generator&#x2F;&quot;&gt;Parser Generator&lt;&#x2F;a&gt; to support Nimbus.&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>
