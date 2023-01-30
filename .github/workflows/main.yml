@@ -11,6 +11,6 @@ jobs:
         uses: shalzz/zola-deploy-action@v0.16.1
         env:
           # Target branch
-          PAGES_BRANCH: main
+          PAGES_BRANCH: gh-pages
           # if publishing to the same repo, use the automatic token
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
