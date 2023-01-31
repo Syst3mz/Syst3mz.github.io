@@ -54,4 +54,20 @@ following phases (loosely following the architecture of a compiler).&lt;&#x2F;p&
 &lt;p&gt;Well, its a work in... Right now I am working on making a &lt;a href=&quot;https:&#x2F;&#x2F;syst3mz.github.io&#x2F;lalr-generator&#x2F;&quot;&gt;Parser Generator&lt;&#x2F;a&gt; to support Nimbus.&lt;&#x2F;p&gt;
 </content>
 	</entry>
+	<entry xml:lang="en">
+		<title>Astrophotography</title>
+		<published>2022-01-16T00:00:00+00:00</published>
+		<updated>2022-01-16T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://syst3mz.github.io/astrophotography/" type="text/html"/>
+		<id>https://syst3mz.github.io/astrophotography/</id>
+		<content type="html">&lt;h1 id=&quot;astrophotography&quot;&gt;Astrophotography&lt;&#x2F;h1&gt;
+&lt;p&gt;Astro photography is the art of taking images of space. I find it to be a relaxing, cold, and very enjoyable way to give people a glimpse into the stars without requiring them to come out to a telescope (but they totally should).&lt;&#x2F;p&gt;
+ 
+&lt;img src=&quot;imgs&#x2F;Moonshot.bmp&quot; alt=&quot;Image colorized by abberation&quot; width=&quot;600&quot; height=&quot;400&quot; &#x2F;&gt;
+&lt;h2 id=&quot;what-are-deep-sky-objects&quot;&gt;What are Deep Sky Objects&lt;&#x2F;h2&gt;
+&lt;p&gt;Deep Sky Objects (DSO) are celestial bodies that are particularly far away or dim. These are often things like nebula and galaxies. &lt;&#x2F;p&gt;
+&lt;h2 id=&quot;why-don-t-you-image-them-they-look-the-coolest&quot;&gt;Why don&#x27;t you image them, they look the coolest&lt;&#x2F;h2&gt;
+&lt;p&gt;I am working on it, however due to how dim DSOs are, you need the ability to track their positions very precisely to allow more particles of light to reach the camera&#x27;s sensor. I am working on upgrading my telescope with this capability but I&#x27;m not there yet.&lt;&#x2F;p&gt;
+</content>
+	</entry>
 </feed>

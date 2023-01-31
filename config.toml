@@ -10,10 +10,6 @@ generate_feed = true
 feed_filename = "atom.xml"
 #ignored_content = ["*.{graphml,xlsx}", "temp.*"]
 #hard_link_static = false # set to true to hard link instead of copying, useful for very large files.
-taxonomies = [
-    {name = "categories", feed = true},
-    {name = "tags", feed = true},
-]
 
 theme = "abridge"
 
@@ -54,7 +50,7 @@ footer_credit = true
 
 #uncomment one of the two lines, or neither, depending on which type of logo you want to use:
 #logo = { file="logo.svg", width="32", height="32", alt="Abridge", text="bridge" }
-textlogo = '<font color="#f90">E</font>than'
+textlogo = 'Ethan'
 #textlogo = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="32" height="32"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge'
 
 sitedesc = false # enables or disables the display of the site description below the logo.
@@ -65,7 +61,7 @@ foothr = true # show or hide horizontal rule above footer
 
 menu = [
     {url = "/projects/", name = "Projects", slash = true, blank = false},
-    {url = "/resume/", name = "Resume", slash = true, blank = false},
+    {url = "/resume", name = "Resume", slash = false, blank = false},
 ]
 menu_footer = [
     {url = "/", name = "About", slash = true, blank = false},
@@ -123,14 +119,14 @@ stylesheets = [ "abridge-switcher.css" ] # Orange Automatic Dark/Light Theme bas
 
 banner = "banner.png" # Used as default image for OpenGraph/Twitter if page specific image is undefined.
 # favicons, comment out a line to disable loading some or all of these.
-favicon_theme_color = "#333333"
-favicon_ms_color = "#333333"
-favicon_webmanifest = "site.webmanifest" # Used for android-chrome-512x512.png and android-chrome-192x192.png
-favicon_mask = "safari-pinned-tab.svg" # safari-pinned-tab.svg
-favicon_mask_color = "#ff9900"
-favicon180 = "apple-touch-icon.png" # apple-touch-icon.png
-favicon32 = "favicon-32x32.png" # favicon-32x32.png
-favicon16 = "favicon-16x16.png" # favicon-16x16.png
+# favicon_theme_color = "#333333"
+# favicon_ms_color = "#333333"
+# favicon_webmanifest = "site.webmanifest" # Used for android-chrome-512x512.png and android-chrome-192x192.png
+# favicon_mask = "safari-pinned-tab.svg" # safari-pinned-tab.svg
+# favicon_mask_color = "#ff9900"
+# favicon180 = "apple-touch-icon.png" # apple-touch-icon.png
+# favicon32 = "favicon-32x32.png" # favicon-32x32.png
+# favicon16 = "favicon-16x16.png" # favicon-16x16.png
 
 icon_search = "svgs search" # Search button in search box.
 icon_adjust = "svgs adjust" # Theme Switcher button in top menu. (add class svgh to change colors on hover)
@@ -181,7 +177,7 @@ katex_bundle = "katexbundle.min.js"
 # meta/seo/analytic tags
 ##########################
 keywords = "Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" # used for the primary site index
-twitter = "your-user-name" # used for twitter related
+#twitter = "your-user-name" # used for twitter related
 #google = "Your Google Site verification code."
 #bing = "Your Bing Site verification code."
 seo = true  # enable or disable seo-related meta tags: opengraph, facebook, twitter
@@ -190,4 +186,4 @@ seo = true  # enable or disable seo-related meta tags: opengraph, facebook, twit
 [extra.social]
 mail_encode = true # This obfuscates your email address, javascript is used to decode it at page load.
 mail = "ethan.ansburg@protonmail.com"
-github = "your-user-name"
+github = "Syst3mz"

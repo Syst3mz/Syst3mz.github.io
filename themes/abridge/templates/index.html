@@ -55,14 +55,16 @@
     {{- macros::pagination(paginator=paginator, config=config) }}
     </div>
   {%- set section_item = get_section(path="_index.md") %}
-  {%- if config.extra.recent | default(value=true) %}
-    <div class="toc">
-      <div class="toc-sticky">
-        <h1><span class="s75">Recent Posts</span></h1>
-        {%- for page in section_item.pages | slice(end=config.extra.recent_items) %}
-          {{- page_macros::page_listing(page=page, config=config) }}
-        {%- endfor %}
-      </div>
+  <div class="toc">
+    <div class="toc-sticky">
+      <h1><span class="s75">Ethan Ansburg</span></h1>
+      <p style="font-size: 2.2vh;">I am a second year computer science student at the University Of Colorado at Boulder with intrests in:</p>
+      <ul style="font-size: 2.2vh;">
+        <li>Cyber Security</li>
+        <li>Programming Language Developement</li>
+        <li>Astronomy</li>
+        <li>...And Rocketry</li>
+      </ul>
     </div>
-  {%- endif %}
+  </div>
 {%- endblock content %}
