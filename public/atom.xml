@@ -2,17 +2,17 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 	<title>Ethan&#x27;s Portfolio</title>
 	<subtitle>A website to show off my projects and aspirations.</subtitle>
-	<link href="https://https://syst3mz.github.io/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://https://syst3mz.github.io/"/>
+	<link href="https://syst3mz.github.io/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://syst3mz.github.io"/>
 	<generator uri="https://www.getzola.org/">Zola</generator>
 	<updated>2023-01-23T00:00:00+00:00</updated>
-	<id>https://https://syst3mz.github.io/atom.xml</id>
+	<id>https://syst3mz.github.io/atom.xml</id>
 	<entry xml:lang="en">
 		<title>LALR Parser Generator</title>
 		<published>2023-01-23T00:00:00+00:00</published>
 		<updated>2023-01-23T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://https://syst3mz.github.io/lalr-generator/" type="text/html"/>
-		<id>https://https://syst3mz.github.io/lalr-generator/</id>
+		<link rel="alternate" href="https://syst3mz.github.io/lalr-generator/" type="text/html"/>
+		<id>https://syst3mz.github.io/lalr-generator/</id>
 		<content type="html">&lt;p&gt;Nybble more&lt;&#x2F;p&gt;
 </content>
 	</entry>
@@ -20,8 +20,8 @@
 		<title>Nimbus</title>
 		<published>2023-01-16T00:00:00+00:00</published>
 		<updated>2023-01-16T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://https://syst3mz.github.io/nimbus/" type="text/html"/>
-		<id>https://https://syst3mz.github.io/nimbus/</id>
+		<link rel="alternate" href="https://syst3mz.github.io/nimbus/" type="text/html"/>
+		<id>https://syst3mz.github.io/nimbus/</id>
 		<content type="html">&lt;h1 id=&quot;nimbus&quot;&gt;Nimbus&lt;&#x2F;h1&gt;
 &lt;p&gt;Nimbus is an interpreted multi-paradigm general purpose programming language that I am developing.&lt;&#x2F;p&gt;
 &lt;p&gt;Nimbus is designed to be the fastest programming language to write code in, and will make sacrifices in all other areas 
@@ -51,7 +51,7 @@ following phases (loosely following the architecture of a compiler).&lt;&#x2F;p&
 &lt;li&gt;Interpretation&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;h2 id=&quot;progress&quot;&gt;Progress&lt;&#x2F;h2&gt;
-&lt;p&gt;Well, its a work in... Right now I am working on making a &lt;a href=&quot;https:&#x2F;&#x2F;https:&#x2F;&#x2F;syst3mz.github.io&#x2F;lalr-generator&#x2F;&quot;&gt;Parser Generator&lt;&#x2F;a&gt; to support Nimbus.&lt;&#x2F;p&gt;
+&lt;p&gt;Well, its a work in... Right now I am working on making a &lt;a href=&quot;https:&#x2F;&#x2F;syst3mz.github.io&#x2F;lalr-generator&#x2F;&quot;&gt;Parser Generator&lt;&#x2F;a&gt; to support Nimbus.&lt;&#x2F;p&gt;
 </content>
 	</entry>
 </feed>

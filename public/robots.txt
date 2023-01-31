@@ -1,4 +1,4 @@
-Sitemap: https://https//syst3mz.github.io/sitemap.xml
+Sitemap: https://syst3mz.github.io/sitemap.xml
 User-Agent: *
 Allow: /
-Host: https://https//syst3mz.github.io
+Host: https://syst3mz.github.io/

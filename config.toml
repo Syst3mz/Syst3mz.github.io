@@ -1,5 +1,5 @@
 # do NOT include a trailing slash on the base URL for web urls
-base_url = "syst3mz.github.io"
+base_url = "https://syst3mz.github.io"
 title = "Ethan's Portfolio"
 description = "A website to show off my projects and aspirations."
 default_language = "en"
