@@ -19,11 +19,11 @@ draft = false
             </ul>
             <p>Overall College GPA: 3.35</p>
             <ul>
-                <li>Attended Hofstra University (2021-2022)</li>
-                <li>Attending University of Colorado at Boulder (2022-2023)</li>
+                <li>Attended Hofstra University as a Computer Science and Cyber Security Major (2021-2022)</li>
+                <li>Attending University of Colorado at Boulder as a Computer Science Major (2022-2023)</li>
             </ul>
         </td>
-        <td style="text-align: right">
+        <td style="text-align: right; vertical-align: top;">
             <h2>Certifications</h2>
             <ul style="display: inline-block; direction: rtl">
                 <li>TestOut PC Pro (2020)</li>
@@ -50,7 +50,7 @@ draft = false
                     <li>Saint Michael's College Book Award (2020)</li>
                     <li> Wolf Pack Howl Commendation (Grandview High School - 2021)</li>
                     <li> Honor Roll (Grandview High School - 2020-2021)</li>
-                    <li> National   , 3rd in district, and 5th in state (<b>F</b>uture <b>B</b>usiness <b>L</b>eaders of <b>A</b>merica - 2017)</li>
+                    <li> National Competitor, 5th place in state, 3rd place in district (<b>F</b>uture <b>B</b>usiness <b>L</b>eaders of <b>A</b>merica - 2017)</li>
                     <li> Sportsmanship Award (Rocky Mountain Regional Silver Sticks Hockey Tournament - 2017)</li>
                 <ul>
             </div>
@@ -58,7 +58,7 @@ draft = false
     </tr>
     <tr>
         <td>
-            <h2>Work Experiance</h2>
+            <h2>Work Experience</h2>
             <ul>
                 <li>
                 <b>SpyderSec - Penitration Testing Intern</b>
@@ -114,6 +114,23 @@ draft = false
                 <li><h3>Sounding Rockets Lab</h3>
                     <p>A club dedicated to designing and building our own high preformance rockets.</p>
                 </li>
+            </ul>
+        </td>
+    </tr>
+    <tr style="page-break-before: always;">
+        <td colspan="3">
+            <h2>Technical Skills</h2>
+            <ul>
+                <li>Proficient in Rust, C#, C++, HTML/CSS/JS, and Python.</li>
+                <li>Experienced with Blender, JetBrains IDEs, Adobe After Effects, Git and Github</li>
+                <li>Proficiancy in using Linux (CentOS, Kali Linux, Ubuntu, Debian), Windows (7, 8, 10)</li>
+                <li>Batch and Bash scripting knowledge</li>
+            </ul>
+            <h2>Soft Skills</h2>
+            <ul>
+                <li>Excelent written and verbal comunication skills</li>
+                <li>Strong work ethic</li>
+                <li>Fast learner</li>
             </ul>
         </td>
     </tr>
