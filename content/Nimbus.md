@@ -3,7 +3,6 @@ title = "Nimbus"
 date = 2023-01-16
 +++
 
-# Nimbus
 Nimbus is an interpreted multi-paradigm general purpose programming language that I am developing.
 
 Nimbus is designed to be the fastest programming language to write code in, and will make sacrifices in all other areas 
@@ -64,7 +63,7 @@ finding bugs, free up the human to fix them.
 ## Goals
 
 ### Co-pilot Interpreter
-For the co-pilot, the interpreter must be able to run in a "interactive" mode, where a file is watched and AST is generated in realtime to reporting to the IDE. It should provide fixes in real time as errors occur. The Interpreter shuold assume what the developer is *wrong* because as they are writing it, their code is almost certainly wrong.
+For the co-pilot, the interpreter must be able to run in a "interactive" mode, where a file is watched and AST is generated in realtime for reporting to the IDE. It should provide fixes in real time as errors occur. The Interpreter shuold assume what the developer is *wrong* because as they are writing it, their code is almost certainly wrong.
 
 
 # Stages

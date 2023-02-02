@@ -8,7 +8,7 @@ draft = false
 <h2 style="width: 50%; display:inline-block">Ethan Ansburg</h2>
 <div style="float: right; text-align: right; width: 50%; display:inline-block">
     <p>Tel: 720-387-1327</p>
-    <p>E-Mail: <a href="mailto:ethan.ansburg@protonmail.com">Ethan.Ansburg@protonmail.com</a></p>
+    <p>E-Mail: <a href="mailto:ethan.ansburg+jobs@protonmail.com">Ethan.Ansburg+jobs@protonmail.com</a></p>
 </div>
 <table>
     <tr>
