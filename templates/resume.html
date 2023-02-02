@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{%- block content %}
+    <style>
+    @media print {
+        body * {
+          visibility: hidden;
+          color: black;
+        }
+        #section-to-print, #section-to-print * {
+          visibility: visible;
+        }
+        #section-to-print {
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+      }
+    </style>
+
+    <div>
+        <div id="section-to-print"> 
+            {{ page.content | safe }}    
+        </div>
+        <p>Resume as a <a href="resume/resume.pdf">pdf</a> if you would prefer.</p>
+    </div>
+    
+{%- endblock %}

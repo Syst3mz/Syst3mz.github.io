@@ -1,13 +1,15 @@
 +++
 title = "Resume"
-description = "Ethan Ansburgs' Resume"
+description = "Ethan Ansburg's Resume"
 path = "resume"
-template = "pages.html"
+template = "resume.html"
 draft = false
 +++
-# Name
-Ethan Ansburg
-
+<h2 style="width: 50%; display:inline-block">Ethan Ansburg</h2>
+<div style="float: right; text-align: right; width: 50%; display:inline-block">
+    <p>Tel: 720-387-1327</p>
+    <p>E-Mail: <a href="mailto:ethan.ansburg@protonmail.com">Ethan.Ansburg@protonmail.com</a></p>
+</div>
 <table>
     <tr>
         <td>
@@ -21,11 +23,11 @@ Ethan Ansburg
                 <li>Attending University of Colorado at Boulder (2022-2023)</li>
             </ul>
         </td>
-        <td>
+        <td style="text-align: right">
             <h2>Certifications</h2>
-            <ul>
-                <li>PADI Certified Rescue SCUBA diver</li>
-                <li>TestOut PC Pro</li>
+            <ul style="display: inline-block; direction: rtl">
+                <li>TestOut PC Pro (2020)</li>
+                <li>PADI Certified Rescue SCUBA diver (2017)</li>
             </ul>
         </td>
     </tr>
@@ -33,9 +35,23 @@ Ethan Ansburg
         <td colspan="3">
             <h2 style="text-align: center">Awards</h2>
             <div style="text-align: center">
-                <ul style="display: inline-block;">
-                    <li>Saint Michales College Book Award (2017)</li>
+                <style>
+                    ul.two-col li {
+                            float: left;
+                            width: 50%; //helps to determine number of columns, for instance 33.3% displays 3 columns
+                        }
+                    ul.two-col {
+                        list-style-type: disc;
+                    }
+                </style>
+                <ul class="two-col" style="display: inline-block; text-align: left">
                     <li>Hofstra University Dean's List (2022)</li>
+                    <li> AP Scholar with Distinction (College Board - 2021) </li>
+                    <li>Saint Michael's College Book Award (2020)</li>
+                    <li> Wolf Pack Howl Commendation (Grandview High School - 2021)</li>
+                    <li> Honor Roll (Grandview High School - 2020-2021)</li>
+                    <li> National   , 3rd in district, and 5th in state (<b>F</b>uture <b>B</b>usiness <b>L</b>eaders of <b>A</b>merica - 2017)</li>
+                    <li> Sportsmanship Award (Rocky Mountain Regional Silver Sticks Hockey Tournament - 2017)</li>
                 <ul>
             </div>
         </td>
@@ -56,8 +72,7 @@ Ethan Ansburg
                     </ul>
                     </li>
                     <li>
-                    Dates of Employment
-                    I forgor-I don rember
+                    Dates of Employment: Summer '20
                     </li>
                 </ul>
                 </li>
@@ -73,10 +88,31 @@ Ethan Ansburg
                     </ul>
                     </li>
                     <li>
-                    Dates of Employment
-                    I forgor-I don rember
+                    Dates of Employment: Summer '19
                     </li>
                 </ul>
+                </li>
+            </ul>
+        </td>
+        <td style="vertical-align: top; text-align: right;">
+            <h2>Clubs & Activities<h2>
+            <style>
+                ul.split {
+                    display: inline-block; direction: rtl;
+                }
+                ul.split li * {
+                    direction: ltr;
+                }
+            </style>
+            <ul class="split">
+                <li><h3>CU Astronomy Club</h3>
+                    <p>Club dedicated to astronomy, we make bi-weekly dark sky trips to view and image space and the stars.<p>
+                </li>
+                <li><h3>CU <b>S</b>cience, <b>T</b>echnology and <b>A</b>stronomy <b>R</b>ecruits</h3>
+                    <p>Profesional developlment club for science, technology and astronomy. Heavy focus on voulnteering and outreach.</p>
+                </li>
+                <li><h3>Sounding Rockets Lab</h3>
+                    <p>A club dedicated to designing and building our own high preformance rockets.</p>
                 </li>
             </ul>
         </td>
