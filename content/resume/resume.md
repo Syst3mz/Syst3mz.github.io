@@ -5,7 +5,10 @@ path = "resume"
 template = "resume.html"
 draft = false
 +++
-<h2 style="width: 50%; display:inline-block">Ethan Ansburg</h2>
+<div style="width: 50%; display:inline-block">
+    <h2>Ethan Ansburg</h2>
+    <p>Web: <a href="https://syst3mz.github.io/">syst3mz.github.io</a></p>
+</div>
 <div style="float: right; text-align: right; width: 50%; display:inline-block">
     <p>Tel: 720-387-1327</p>
     <p>E-Mail: <a href="mailto:ethan.ansburg+jobs@protonmail.com">Ethan.Ansburg+jobs@protonmail.com</a></p>
@@ -13,25 +16,74 @@ draft = false
 <table>
     <tr>
         <td>
-            <h2>Education<h2>
+        <h2>Education<h2>
             <ul>
+                <li><p>Overall College GPA: 3.35</p></li>
+                <li>University of Colorado at Boulder, Computer Science, Expected Graduation 2025</li>
+                <li>Hofstra University, Computer Science and Cyber Security (2021-2022)</li>
                 <li>Graduate of Grandview Highschool (2017-2021)</li>
             </ul>
-            <p>Overall College GPA: 3.35</p>
-            <ul>
-                <li>Attended Hofstra University as a Computer Science and Cyber Security Major (2021-2022)</li>
-                <li>Attending University of Colorado at Boulder as a Computer Science Major (2022-2023)</li>
-            </ul>
         </td>
-        <td style="text-align: right; vertical-align: top;">
-            <h2>Certifications</h2>
-            <ul style="display: inline-block; direction: rtl">
-                <li>TestOut PC Pro (2020)</li>
-                <li>PADI Certified Rescue SCUBA diver (2017)</li>
-            </ul>
+        <td style="vertical-align: top;">
+            <div style="float: right">
+                <h2>Certifications</h2>
+                <ul>
+                    <li>Amateur Radio Technician (2022)</li>
+                    <li>TestOut PC Pro (2020)</li>
+                    <li>PADI Certified Rescue SCUBA diver (2017)</li>
+                </ul>
+            </div>
         </td>
     </tr>
     <tr>
+        <td>
+            <div style="display: inline-block">
+                <h2>Relevant Work Experience</h2>
+                <ul>
+                    <li>
+                        <b>SpyderSec - Penetration Testing Intern (Summer '20)</b>
+                        <ul>
+                            <li>Preform a penetration test against a specific target</li>
+                            <li>Develop custom tools to fuzz and automatically attack endpoints</li>
+                            <li>Produce a report about vulnerabilities found</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </td>
+        <td>
+            <h2>Technical Skills</h2>
+            <ul>
+                <li>Proficient in Rust, C#, C++, HTML/CSS/JS, and Python</li>
+                <li>Experienced with Blender, JetBrains IDEs, Adobe After Effects, Git and Github</li>
+                <li>Proficiency in using Linux (CentOS, Kali Linux, Ubuntu, Debian), Windows (7, 8, 10)</li>
+                <li>Batch and Bash scripting knowledge</li>
+            </ul>
+            <h2>Soft Skills</h2>
+            <ul>
+                <li>Excellent written and verbal communication skills</li>
+                <li>Strong work ethic</li>
+                <li>Fast learner</li>
+            </ul>
+        </td>
+    </tr>
+    <tr style="page-break-after: always;">
+        <td colspan="3" style="vertical-align: top;">
+            <h2>Clubs & Activities<h2>
+            <ul>
+                <li><h3>Sounding Rockets Lab</h3>
+                    <p>A club dedicated to designing and building our own high performance rockets. I work as part of the avionics software sub-team.</p>
+                </li>
+                <li><h3>CU Astronomy Club</h3>
+                    <p>Makes bi-weekly dark sky trips to view and image space and the stars.<p>
+                </li>
+                <li><h3>CU <b>S</b>cience, <b>T</b>echnology and <b>A</b>stronomy <b>R</b>ecruits</h3>
+                    <p>Professional development club for science, technology and astronomy. Heavy focus on volunteering and outreach.</p>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr style="page-break-before: always;">
         <td colspan="3">
             <h2 style="text-align: center">Awards</h2>
             <div style="text-align: center">
@@ -57,80 +109,17 @@ draft = false
         </td>
     </tr>
     <tr>
-        <td>
-            <h2>Work Experience</h2>
-            <ul>
-                <li>
-                <b>SpyderSec - Penitration Testing Intern</b>
-                <ul>
-                    <li>
-                    Duties
-                    <ul>
-                        <li>Preform a penetration test against a specific target.</li>
-                        <li>Develop custom tools to fuzz and automatically attack endpoints.</li>
-                        <li>Produce a report about vulnrabilites found.</li>
-                    </ul>
-                    </li>
-                    <li>
-                    Dates of Employment: Summer '20
-                    </li>
-                </ul>
-                </li>
-                <li>
-                <b>V-Esprit Active Adult Comunity - Escort</b>
-                <ul>
-                    <li>
-                    Duties
-                    <ul>
-                        <li>Assist residents in getting from their homes to the comunity center.</li>
-                        <li>Deliver mail to resident homes.</li>
-                        <li>Provide technical support to residents.</li>
-                    </ul>
-                    </li>
-                    <li>
-                    Dates of Employment: Summer '19
-                    </li>
-                </ul>
-                </li>
-            </ul>
-        </td>
-        <td style="vertical-align: top; text-align: right;">
-            <h2>Clubs & Activities<h2>
-            <style>
-                ul.split {
-                    display: inline-block; direction: rtl;
-                }
-                ul.split li * {
-                    direction: ltr;
-                }
-            </style>
-            <ul class="split">
-                <li><h3>CU Astronomy Club</h3>
-                    <p>Club dedicated to astronomy, we make bi-weekly dark sky trips to view and image space and the stars.<p>
-                </li>
-                <li><h3>CU <b>S</b>cience, <b>T</b>echnology and <b>A</b>stronomy <b>R</b>ecruits</h3>
-                    <p>Profesional developlment club for science, technology and astronomy. Heavy focus on voulnteering and outreach.</p>
-                </li>
-                <li><h3>Sounding Rockets Lab</h3>
-                    <p>A club dedicated to designing and building our own high preformance rockets.</p>
-                </li>
-            </ul>
-        </td>
-    </tr>
-    <tr style="page-break-before: always;">
         <td colspan="3">
-            <h2>Technical Skills</h2>
+            <h2>Other Work Experience</h2>
             <ul>
-                <li>Proficient in Rust, C#, C++, HTML/CSS/JS, and Python.</li>
-                <li>Experienced with Blender, JetBrains IDEs, Adobe After Effects, Git and Github</li>
-                <li>Proficiancy in using Linux (CentOS, Kali Linux, Ubuntu, Debian), Windows (7, 8, 10)</li>
-                <li>Batch and Bash scripting knowledge</li>
-            </ul>
-            <h2>Soft Skills</h2>
-            <ul>
-                <li>Excelent written and verbal comunication skills</li>
-                <li>Strong work ethic</li>
-                <li>Fast learner</li>
+                <li>
+                    <b>V-Esprit Active Adult Community - Escort (Summer '19)</b>
+                    <ul>
+                        <li>Assist residents in getting from their homes to the community center</li>
+                        <li>Deliver mail to resident homes</li>
+                        <li>Provide technical support to residents</li>
+                    </ul>
+                </li>
             </ul>
         </td>
     </tr>
