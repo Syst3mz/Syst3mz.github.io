@@ -1,0 +1,22 @@
+guide posts
+on the top left Ethan -> Ethan Ansburg
+In the TOC Sticky Cyber Security -> Pen testing
+reverse order of education
+<college>, Major: <X>, date +  expected grad/attendence dates
+fix GPA alignment
+
+awards under work experiance and skils
+strike duties
+switched to past tense
+bullet points don't have periods
+move dates to top of work experiance
+make work experiance more important
+
+move V-Esprit to "Other work experiance"
+
+add cyber quest
+
+swap skils to awards
+
+strike club "dedicated to astronomy"
+add more info to SRL, make it first, and add avionics subteam
