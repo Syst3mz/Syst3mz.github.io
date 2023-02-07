@@ -13,7 +13,9 @@
 		<updated>2023-01-23T00:00:00+00:00</updated>
 		<link rel="alternate" href="https://syst3mz.github.io/lalr-generator/" type="text/html"/>
 		<id>https://syst3mz.github.io/lalr-generator/</id>
-		<content type="html">&lt;p&gt;Nybble more&lt;&#x2F;p&gt;
+		<content type="html">&lt;p&gt;Parsing, is the first menaingful step to processing a programming language. But what is parsing?&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;parsing&quot;&gt;Parsing&lt;&#x2F;h2&gt;
+&lt;p&gt;Parsing, in very brief is taking some string of text and turning it into a something meaningful for the programing language.&lt;&#x2F;p&gt;
 </content>
 	</entry>
 	<entry xml:lang="en">
@@ -22,25 +24,52 @@
 		<updated>2023-01-16T00:00:00+00:00</updated>
 		<link rel="alternate" href="https://syst3mz.github.io/nimbus/" type="text/html"/>
 		<id>https://syst3mz.github.io/nimbus/</id>
-		<content type="html">&lt;h1 id=&quot;nimbus&quot;&gt;Nimbus&lt;&#x2F;h1&gt;
-&lt;p&gt;Nimbus is an interpreted multi-paradigm general purpose programming language that I am developing.&lt;&#x2F;p&gt;
+		<content type="html">&lt;p&gt;Nimbus is an interpreted multi-paradigm general purpose programming language that I am developing.&lt;&#x2F;p&gt;
 &lt;p&gt;Nimbus is designed to be the fastest programming language to write code in, and will make sacrifices in all other areas 
 to meet that goal. I am writing it to increase my productivity as a programmer and as a learning experience.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;planned-features&quot;&gt;Planned Features&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;familier-syntax&quot;&gt;Familier Syntax&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;nimbus&quot; class=&quot;language-nimbus z-code&quot;&gt;&lt;code class=&quot;language-nimbus&quot; data-lang=&quot;nimbus&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;fn fibbo(Int:n) -&amp;gt; {
+    if n == 1 || n == 2 {
+        return 1
+    }
+
+    return fibbo(n-1) + fibbo(n-2)
+}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;semi-colons-only-where-needed&quot;&gt;Semi-Colons only where needed&lt;&#x2F;h3&gt;
+&lt;p&gt;Note in the above code sample, there are no semi colons.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;optional-and-result-type-syntax&quot;&gt;Optional and Result Type Syntax&lt;&#x2F;h3&gt;
+&lt;p&gt;any type can be made optional with the addition of a &lt;code&gt;?&lt;&#x2F;code&gt;. For example:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;nimbus&quot; class=&quot;language-nimbus z-code&quot;&gt;&lt;code class=&quot;language-nimbus&quot; data-lang=&quot;nimbus&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;int: value = 2 &#x2F;&#x2F; There is value in value
+int?: maybe = 2 &#x2F;&#x2F; An option type with a value
+int?: no = None &#x2F;&#x2F; An option type with no value
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The same syntax can be used to check if a value exists&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;maybe = maybe? + 2
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;h3 id=&quot;garbage-collection&quot;&gt;Garbage Collection&lt;&#x2F;h3&gt;
 &lt;p&gt;Using a well understood Mark-Sweep approach to garbage collection, I can reduce mental overhead when solving problems.&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;multiple-inheritance&quot;&gt;Multiple Inheritance&lt;&#x2F;h3&gt;
 &lt;p&gt;While problems like the well studied &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Multiple_inheritance#:~:text=The%20%22diamond%20problem%22%20(sometimes,from%20both%20B%20and%20C.&quot;&gt;diamond problem&lt;&#x2F;a&gt;
 exist, it is my opinion that the increase of re-usability in code that multiple inheritance can provide is well worth it.&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;function-level-structural-subtyping-duck-typing&quot;&gt;Function Level Structural Subtyping (Duck-Typing)&lt;&#x2F;h3&gt;
+&lt;h3 id=&quot;function-level-structural-subtyping-restricted-duck-typing&quot;&gt;Function Level Structural Subtyping (Restricted Duck-Typing)&lt;&#x2F;h3&gt;
 &lt;p&gt;While multiple inheritance can cover a lot, I feel that allowing functions to explicitly define what they need to work 
 will allow a massive increase in re-usability.&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;tagged-enums&quot;&gt;Tagged Enums&lt;&#x2F;h3&gt;
-&lt;p&gt;Ripped straight from rust, they allow much more expressive and correct code.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;nimbus&quot; class=&quot;language-nimbus z-code&quot;&gt;&lt;code class=&quot;language-nimbus&quot; data-lang=&quot;nimbus&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;&#x2F;&#x2F; syntax under heavy development!!!
+fn add_one&amp;lt;T: T.Int:number&amp;gt;(T:holder) {
+    holder.number += 1
+}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;tagged-generic-enums&quot;&gt;Tagged &amp;amp; Generic Enums&lt;&#x2F;h3&gt;
+&lt;p&gt;Ripped straight from &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.rust-lang.org&#x2F;&quot;&gt;Rust&lt;&#x2F;a&gt;, they allow much more expressive and correct code.&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;gradual-correctness&quot;&gt;Gradual Correctness&lt;&#x2F;h3&gt;
 &lt;p&gt;The Nimbus interpreter will have multiple modes, each more strict than the last. Allow the computer to the hard work of 
-finding bugs, free up the human to fix them.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;stages&quot;&gt;Stages&lt;&#x2F;h2&gt;
+finding bugs, free up the human to fix them. &lt;&#x2F;p&gt;
+&lt;h2 id=&quot;goals&quot;&gt;Goals&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;co-pilot-interpreter&quot;&gt;Co-pilot Interpreter&lt;&#x2F;h3&gt;
+&lt;p&gt;For the co-pilot, the interpreter must be able to run in a &amp;quot;interactive&amp;quot; mode, where a file is watched and AST is generated in realtime for reporting to the IDE. It should provide fixes in real time as errors occur. The Interpreter shuold assume what the developer is &lt;em&gt;wrong&lt;&#x2F;em&gt; because as they are writing it, their code is almost certainly wrong.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;stages&quot;&gt;Stages&lt;&#x2F;h1&gt;
 &lt;p&gt;To accomplish the herculean task of writing my own programming language, I have split up the challenges into the 
 following phases (loosely following the architecture of a compiler).&lt;&#x2F;p&gt;
 &lt;ul&gt;
@@ -50,8 +79,17 @@ following phases (loosely following the architecture of a compiler).&lt;&#x2F;p&
 &lt;li&gt;Optimization&lt;&#x2F;li&gt;
 &lt;li&gt;Interpretation&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
-&lt;h2 id=&quot;progress&quot;&gt;Progress&lt;&#x2F;h2&gt;
+&lt;h1 id=&quot;progress&quot;&gt;Progress&lt;&#x2F;h1&gt;
 &lt;p&gt;Well, its a work in... Right now I am working on making a &lt;a href=&quot;https:&#x2F;&#x2F;syst3mz.github.io&#x2F;lalr-generator&#x2F;&quot;&gt;Parser Generator&lt;&#x2F;a&gt; to support Nimbus.&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Proof Of Work</title>
+		<published>2022-12-18T00:00:00+00:00</published>
+		<updated>2022-12-18T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://syst3mz.github.io/proof-of-work/" type="text/html"/>
+		<id>https://syst3mz.github.io/proof-of-work/</id>
+		<content type="html">&lt;p&gt;This website, is coded by me using the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;&quot;&gt;Zola&lt;&#x2F;a&gt; Static-Site-Generator, using the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;abridge.netlify.app&#x2F;&quot;&gt;Abridge&lt;&#x2F;a&gt; theme. The website is hosted with ❤️ on Github Pages.&lt;&#x2F;p&gt;
 </content>
 	</entry>
 	<entry xml:lang="en">
@@ -60,10 +98,24 @@ following phases (loosely following the architecture of a compiler).&lt;&#x2F;p&
 		<updated>2022-01-16T00:00:00+00:00</updated>
 		<link rel="alternate" href="https://syst3mz.github.io/astrophotography/" type="text/html"/>
 		<id>https://syst3mz.github.io/astrophotography/</id>
-		<content type="html">&lt;h1 id=&quot;astrophotography&quot;&gt;Astrophotography&lt;&#x2F;h1&gt;
-&lt;p&gt;Astro photography is the art of taking images of space. I find it to be a relaxing, cold, and very enjoyable way to give people a glimpse into the stars without requiring them to come out to a telescope (but they totally should).&lt;&#x2F;p&gt;
- 
-&lt;img src=&quot;imgs&#x2F;Moonshot.bmp&quot; alt=&quot;Image colorized by abberation&quot; width=&quot;600&quot; height=&quot;400&quot; &#x2F;&gt;
+		<content type="html">&lt;p&gt;Astrophotography is the art of taking images of space. I find it to be a relaxing, cold, and very enjoyable way to give people a glimpse into the stars without requiring them to come out to a telescope (but they totally should).&lt;&#x2F;p&gt;
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+             
+&lt;img src=&quot;..&#x2F;imgs&#x2F;Moonshot.bmp&quot; alt=&quot;A zoomed in section of the moon at the edge between light and dark&quot; width=&quot;600&quot; height=&quot;400&quot; &#x2F;&gt;
+
+        &lt;td&gt;
+        &lt;td&gt;
+             
+&lt;img src=&quot;..&#x2F;imgs&#x2F;moon II.bmp&quot; alt=&quot;Wider field view of the moon, which is colorized by chromatic aberration&quot; width=&quot;600&quot; height=&quot;400&quot; &#x2F;&gt;
+
+        &lt;&#x2F;td&gt;
+    &lt;&#x2F;tr&gt;
+    &lt;tr&gt;
+        &lt;td colspan=&quot;3&quot; style=&quot;text-align: center&quot;&gt;Both images taken by me!&lt;&#x2F;td&gt;
+    &lt;&#x2F;tr&gt;
+&lt;&#x2F;table&gt;
 &lt;h2 id=&quot;what-are-deep-sky-objects&quot;&gt;What are Deep Sky Objects&lt;&#x2F;h2&gt;
 &lt;p&gt;Deep Sky Objects (DSO) are celestial bodies that are particularly far away or dim. These are often things like nebula and galaxies. &lt;&#x2F;p&gt;
 &lt;h2 id=&quot;why-don-t-you-image-them-they-look-the-coolest&quot;&gt;Why don&#x27;t you image them, they look the coolest&lt;&#x2F;h2&gt;

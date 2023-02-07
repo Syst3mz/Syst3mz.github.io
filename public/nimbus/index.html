@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
   <script src="https://syst3mz.github.io/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
-  <link rel="stylesheet" href="https://syst3mz.github.io/abridge-switcher.css?h=c850f5392cbd40b6d06752342d3fd5ceefa08d529af137d89832f0456e26ff53" />
+  <link rel="stylesheet" href="https://syst3mz.github.io/abridge-switcher.css?h=209a1f16dd0c0675205867ed9acd4c061e165edc5cd4cfee86e5f6e8b3dbe9b3" />
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -35,21 +35,14 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="theme-color" content="#333333" />
-  <meta name="msapplication-TileColor" content="#333333" />
-  <link rel="manifest" href="https://syst3mz.github.io/site.webmanifest" />
-  <link rel="mask-icon" href="https://syst3mz.github.io/safari-pinned-tab.svg" color="#ff9900" />
-  <link rel="apple-touch-icon" sizes="180x180" href="https://syst3mz.github.io/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="https://syst3mz.github.io/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="https://syst3mz.github.io/favicon-16x16.png" />
   <noscript><link rel="stylesheet" href="https://syst3mz.github.io/nojs.css" /></noscript>
 </head>
 <body>
   <header>
     <nav>
-      <div><h1><a href="https://syst3mz.github.io/"><font color="#f90">E</font>than</a></h1></div>
+      <div><h1><a href="https://syst3mz.github.io/">Ethan</a></h1></div>
       <div>
-        <ul><li> <h2><a href="https://syst3mz.github.io/projects/">Projects</a></h2> </li><li> <h2><a href="https://syst3mz.github.io/resume/">Resume</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+        <ul><li> <h2><a href="https://syst3mz.github.io/projects/">Projects</a></h2> </li><li> <h2><a href="https://syst3mz.github.io/resume">Resume</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
       </div>
       <div>
         <form autocomplete=off class="js" name="goSearch" id="searchbox">
@@ -67,25 +60,52 @@
         <h1><a href="https://syst3mz.github.io/nimbus/">Nimbus</a></h1>
         <span class="s95"> Ethan Ansburg<span class="hpad"> </span> January 16, 2023<span class="hpad"> </span></span>
 
-    <h1 id="nimbus">Nimbus</h1>
-<p>Nimbus is an interpreted multi-paradigm general purpose programming language that I am developing.</p>
+    <p>Nimbus is an interpreted multi-paradigm general purpose programming language that I am developing.</p>
 <p>Nimbus is designed to be the fastest programming language to write code in, and will make sacrifices in all other areas 
 to meet that goal. I am writing it to increase my productivity as a programmer and as a learning experience.</p>
 <h2 id="planned-features">Planned Features</h2>
+<h3 id="familier-syntax">Familier Syntax</h3>
+<pre data-lang="nimbus" class="language-nimbus z-code"><code class="language-nimbus" data-lang="nimbus"><span class="z-text z-plain">fn fibbo(Int:n) -&gt; {
+    if n == 1 || n == 2 {
+        return 1
+    }
+
+    return fibbo(n-1) + fibbo(n-2)
+}
+</span></code></pre>
+<h3 id="semi-colons-only-where-needed">Semi-Colons only where needed</h3>
+<p>Note in the above code sample, there are no semi colons.</p>
+<h3 id="optional-and-result-type-syntax">Optional and Result Type Syntax</h3>
+<p>any type can be made optional with the addition of a <code>?</code>. For example:</p>
+<pre data-lang="nimbus" class="language-nimbus z-code"><code class="language-nimbus" data-lang="nimbus"><span class="z-text z-plain">int: value = 2 // There is value in value
+int?: maybe = 2 // An option type with a value
+int?: no = None // An option type with no value
+</span></code></pre>
+<p>The same syntax can be used to check if a value exists</p>
+<pre class="z-code"><code><span class="z-text z-plain">maybe = maybe? + 2
+</span></code></pre>
 <h3 id="garbage-collection">Garbage Collection</h3>
 <p>Using a well understood Mark-Sweep approach to garbage collection, I can reduce mental overhead when solving problems.</p>
 <h3 id="multiple-inheritance">Multiple Inheritance</h3>
 <p>While problems like the well studied <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Multiple_inheritance#:~:text=The%20%22diamond%20problem%22%20(sometimes,from%20both%20B%20and%20C.">diamond problem</a>
 exist, it is my opinion that the increase of re-usability in code that multiple inheritance can provide is well worth it.</p>
-<h3 id="function-level-structural-subtyping-duck-typing">Function Level Structural Subtyping (Duck-Typing)</h3>
+<h3 id="function-level-structural-subtyping-restricted-duck-typing">Function Level Structural Subtyping (Restricted Duck-Typing)</h3>
 <p>While multiple inheritance can cover a lot, I feel that allowing functions to explicitly define what they need to work 
 will allow a massive increase in re-usability.</p>
-<h3 id="tagged-enums">Tagged Enums</h3>
-<p>Ripped straight from rust, they allow much more expressive and correct code.</p>
+<pre data-lang="nimbus" class="language-nimbus z-code"><code class="language-nimbus" data-lang="nimbus"><span class="z-text z-plain">// syntax under heavy development!!!
+fn add_one&lt;T: T.Int:number&gt;(T:holder) {
+    holder.number += 1
+}
+</span></code></pre>
+<h3 id="tagged-generic-enums">Tagged &amp; Generic Enums</h3>
+<p>Ripped straight from <a rel="noopener" target="_blank" href="https://www.rust-lang.org/">Rust</a>, they allow much more expressive and correct code.</p>
 <h3 id="gradual-correctness">Gradual Correctness</h3>
 <p>The Nimbus interpreter will have multiple modes, each more strict than the last. Allow the computer to the hard work of 
-finding bugs, free up the human to fix them.</p>
-<h2 id="stages">Stages</h2>
+finding bugs, free up the human to fix them. </p>
+<h2 id="goals">Goals</h2>
+<h3 id="co-pilot-interpreter">Co-pilot Interpreter</h3>
+<p>For the co-pilot, the interpreter must be able to run in a &quot;interactive&quot; mode, where a file is watched and AST is generated in realtime for reporting to the IDE. It should provide fixes in real time as errors occur. The Interpreter shuold assume what the developer is <em>wrong</em> because as they are writing it, their code is almost certainly wrong.</p>
+<h1 id="stages">Stages</h1>
 <p>To accomplish the herculean task of writing my own programming language, I have split up the challenges into the 
 following phases (loosely following the architecture of a compiler).</p>
 <ul>
@@ -95,16 +115,17 @@ following phases (loosely following the architecture of a compiler).</p>
 <li>Optimization</li>
 <li>Interpretation</li>
 </ul>
-<h2 id="progress">Progress</h2>
+<h1 id="progress">Progress</h1>
 <p>Well, its a work in... Right now I am working on making a <a href="https://syst3mz.github.io/lalr-generator/">Parser Generator</a> to support Nimbus.</p>
 
+<p><b><a href="#">Back to top</a></b></p>
     </article>
   </main>
   <footer>
     <hr />
     <div class="c">
       <nav>
-        <ul><li class="js"><a class="m-protected" href="#ZXRoYW4uYW5zYnVyZ0Bwcm90b25tYWlsLmNvbQ==" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/Syst3mz/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li></ul>
+        <ul><li class="js"><a class="m-protected" href="#ZXRoYW4uYW5zYnVyZytqb2JzQHByb3Rvbm1haWwuY29t" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/Syst3mz/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li></ul>
       </nav>
       <p class="s90">Copyright &copy; 2023 Ethan&#x27;s Portfolio</p>
       <nav>
@@ -113,5 +134,8 @@ following phases (loosely following the architecture of a compiler).</p>
       <p class="s90">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> and <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
     </div>
   </footer>
+<span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
 </body>
 </html>

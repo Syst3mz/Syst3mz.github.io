@@ -8,9 +8,6 @@
         <lastmod>2022-01-16</lastmod>
     </url>
     <url>
-        <loc>https://syst3mz.github.io/categories/</loc>
-    </url>
-    <url>
         <loc>https://syst3mz.github.io/lalr-generator/</loc>
         <lastmod>2023-01-23</lastmod>
     </url>
@@ -25,6 +22,10 @@
         <loc>https://syst3mz.github.io/projects/</loc>
     </url>
     <url>
-        <loc>https://syst3mz.github.io/tags/</loc>
+        <loc>https://syst3mz.github.io/proof-of-work/</loc>
+        <lastmod>2022-12-18</lastmod>
+    </url>
+    <url>
+        <loc>https://syst3mz.github.io/resume/</loc>
     </url>
 </urlset>
