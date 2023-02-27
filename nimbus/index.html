@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://syst3mz.github.io/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
+  <link rel="stylesheet" href="https://syst3mz.github.io/abridge-switcher.css?h=209a1f16dd0c0675205867ed9acd4c061e165edc5cd4cfee86e5f6e8b3dbe9b3" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script defer src="https://syst3mz.github.io/abridge-bundle.min.js?h=f0e7958f46d06221e99d6d7f24150858523908ca5ca41865ddfba64bc9466f6a" integrity="sha384-nUzn1rJBMPtXHTJcP76DAl7M3pn9hUVGWBMq6iYleX0NZ/ec+/xQ6nl8iXbBLfCs"></script>
+  <meta name="base" content="https://syst3mz.github.io" />
+  <link rel="alternate" type="application/atom+xml" title="Atom/RSS Feed" href="https://syst3mz.github.io/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Nimbus | Ethan's Portfolio</title>
+  <meta name="author" content="Ethan Ansburg" />
+  <meta name="copyright" content="Ethan&#x27;s Portfolio" />
+  <meta name="description" content="A website to show off my projects and aspirations." />
+  <link rel="canonical" href="https://syst3mz.github.io/nimbus/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://syst3mz.github.io/nimbus/" />
+  <meta name="twitter:url" content="https://syst3mz.github.io/nimbus/" />
+  <meta property="og:description" content="A website to show off my projects and aspirations." />
+  <meta name="twitter:description" content="A website to show off my projects and aspirations." />
+  <meta property="og:title" content="Nimbus | Ethan&#x27;s Portfolio" />
+  <meta name="twitter:title" content="Nimbus | Ethan&#x27;s Portfolio" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://syst3mz.github.io/banner.png" />
+  <meta property="og:image" content="https://syst3mz.github.io/banner.png" />
+  <meta property="og:site_name" content="Ethan&#x27;s Portfolio" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2022-02-01" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <noscript><link rel="stylesheet" href="https://syst3mz.github.io/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><h1><a href="https://syst3mz.github.io/">Ethan Ansburg</a></h1></div>
+      <div>
+        <ul><li> <h2><a href="https://syst3mz.github.io/projects/">Projects</a></h2> </li><li> <h2><a href="https://syst3mz.github.io/resume">Resume</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+      </div>
+      <div>
+        <form autocomplete=off class="js" name="goSearch" id="searchbox">
+          <div class="searchd">
+            <input id="searchinput" type="text" placeholder="Search" title="Search" />
+            <button type="submit" title="Search"><i class="svgs search"></i></button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+        <h1><a href="https://syst3mz.github.io/nimbus/">Nimbus</a></h1>
+        <span class="s95"> Ethan Ansburg<span class="hpad"> </span> February 01, 2022<span class="hpad"> </span></span>
+
+    <p>Nimbus is an interpreted multi-paradigm general purpose programming language that I am developing.</p>
+<p>I am designing Nimbus to be the fastest programming language to write code in. To meet that goal Nimbus will make sacrifices to its safety and run-time speed. I am writing Nimbus, not only as a learning experience, but to increase my productivity as a programmer.</p>
+<h2 id="planned-features">Planned Features</h2>
+<h3 id="familiar-syntax">Familiar Syntax</h3>
+<pre data-lang="nimbus" class="language-nimbus z-code"><code class="language-nimbus" data-lang="nimbus"><span class="z-text z-plain">fn fibbo(Int:n) -&gt; Int {
+    if n == 1 || n == 2 {
+        return 1
+    }
+
+    return fibbo(n-1) + fibbo(n-2)
+}
+</span></code></pre>
+<h3 id="semicolons-only-where-needed">Semicolons Only Where Needed</h3>
+<p>Note in the above code sample, there are no semicolons. Code blocks and other &quot;self-ending&quot; language constructs can be 
+semicolon free.</p>
+<h3 id="optional-and-result-type-syntax">Optional and Result Type Syntax</h3>
+<p>Any type can be made optional with the addition of a <code>?</code>. For example:</p>
+<pre data-lang="nimbus" class="language-nimbus z-code"><code class="language-nimbus" data-lang="nimbus"><span class="z-text z-plain">int: alwaysValue = 2 // There is always a non-none value in alwaysValue
+int?: maybe = 2 // An option type with a value
+int?: no = None // An option type with no value
+</span></code></pre>
+<p>The same syntax can be used to check if a value exists.</p>
+<pre class="z-code"><code><span class="z-text z-plain">maybe = maybe? + 2
+</span></code></pre>
+<p>If there is no value in <code>maybe</code> and if the outer function can return an option, then <code>None</code> is immediately returned; otherwise 
+a <code>ExpectedSome</code> exception is thrown.</p>
+<h3 id="garbage-collection">Garbage Collection</h3>
+<p><strong>A</strong>utomatic <strong>M</strong>emory <strong>M</strong>anagement (AMM) is a must to support the goal of &quot;fast-to-write.&quot; Nimbus will use a garbage collector to handle AMM. Using a garbage collector lets the programmer focus on the program, not on complex move semantics or preventing memory cycles.</p>
+<h3 id="multiple-inheritance">Multiple Inheritance</h3>
+<p>Whereas problems like the well studied <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Multiple_inheritance#:~:text=The%20%22diamond%20problem%22%20(sometimes,from%20both%20B%20and%20C.">diamond problem</a>
+exist, the increase of re-usability in code that multiple inheritance can provide is well worth the challenges associated with multiple inheritance.</p>
+<h3 id="function-level-structural-subtyping-restricted-duck-typing">Function Level Structural Subtyping (Restricted Duck-Typing)</h3>
+<p>To supplement multiple inheritance, allowing functions to explicitly define what data they need to work 
+will allow a massive increase in re-usability.</p>
+<pre data-lang="nimbus" class="language-nimbus z-code"><code class="language-nimbus" data-lang="nimbus"><span class="z-text z-plain">// syntax under heavy development!!!
+fn add_one&lt;T: T.Int:number&gt;(T:holder) {
+    holder.number += 1
+}
+</span></code></pre>
+<h3 id="tagged-generic-enums-pattern-matching">Tagged &amp; Generic Enums + Pattern Matching</h3>
+<p>Nimbus will rip <a rel="noopener" target="_blank" href="https://www.rust-lang.org/">Rust's</a> excellent enums and pattern matching because they allow expressive and correct code.</p>
+<h3 id="gradual-correctness">Gradual Correctness</h3>
+<p>The Nimbus compiler will have multiple levels of safety with safer code requiring stricter compile-time checks. The programmer may chose to hack something together quickly using exceptions to handle errors. Later, they can come back switch a compiler flag, and the Nimbus compiler will enforce safety.</p>
+<h3 id="co-pilot-compiler">Co-pilot Compiler</h3>
+<p>For the co-pilot, the compiler must be able to run in an &quot;interactive&quot; mode, where a file is watched and an AST is generated in real time for reporting to the IDE. It will provide fixes in real time as errors occur. The compiler should assume that the developer is <em>wrong</em> because as they are writing it, their code is almost certainly wrong. </p>
+<h1 id="progress">Progress</h1>
+<details>
+<summary>
+    Nimbus's grammar (work in progress)
+</summary>
+<pre data-lang="ebnf" class="language-ebnf z-code"><code class="language-ebnf" data-lang="ebnf"><span class="z-text z-plain">program        -&gt; declaration+
+</span></code></pre>
+<h2 id="declarations">Declarations</h2>
+<pre data-lang="ebnf" class="language-ebnf z-code"><code class="language-ebnf" data-lang="ebnf"><span class="z-text z-plain">declaration    -&gt; abstract? classDecl
+				| fnDecl
+				| varDecl
+				| enumDecl
+				| useDecl
+
+classDecl      -&gt; &quot;class&quot; identifier (&quot;&lt;&quot; identifierl &quot;&gt;&quot;)? inheritl? &quot;{&quot; classitem* &quot;}&quot;
+inherit        -&gt; &quot;:&quot; (gtype | stype)
+classitem      -&gt; amod classDecl
+                | amod fnDecl
+                | amod varDecl
+                | useDecl
+                
+
+funDecl        -&gt; fn
+
+varDecl        -&gt; &quot;imut&quot;? &quot;var&quot; (type &quot;:&quot; )? identifier (&quot;=&quot; expression)?
+
+useDecl        -&gt; &quot;use&quot; namespace (&quot;as&quot; identifier)?
+namespace      -&gt; (identifier &quot;.&quot;)* identifier
+
+enumDecl       -&gt; &quot;enum&quot; identifier (&quot;&lt;&quot; identifierl &quot;&gt;&quot;)? &quot;{&quot; varientl &quot;}&quot;
+variant        -&gt; identifier (&quot;(&quot; typel &quot;)&quot;)
+</span></code></pre>
+<h2 id="statements">Statements</h2>
+<pre data-lang="ebnf" class="language-ebnf z-code"><code class="language-ebnf" data-lang="ebnf"><span class="z-text z-plain">statement      -&gt; exprStmt
+                | forStmt
+                | ifStmt
+                | returnStmt
+                | whileStmt
+                | block
+
+exprStmt       -&gt; expression &quot;;&quot;
+forStmt        -&gt; &quot;for&quot; identifier &quot;in&quot; expression block
+ifStmt         -&gt; if
+returnStmt     -&gt; &quot;return&quot; expression?
+whileStmt      -&gt; &quot;while&quot; expression block
+block          -&gt; &quot;{&quot; (varDecl | statment)* expression?&quot;}&quot;
+</span></code></pre>
+<h2 id="expressions">Expressions</h2>
+<pre data-lang="ebnf" class="language-ebnf z-code"><code class="language-ebnf" data-lang="ebnf"><span class="z-text z-plain">expression     -&gt; assignment
+                | if
+                
+if             -&gt; &quot;if&quot; expression block else?
+else           -&gt; (&quot;else&quot; &quot;if&quot; expression block)* &quot;else&quot; block
+
+assignment     -&gt; ( call &quot;.&quot; )? identifier &quot;=&quot; assignment
+               | logic_or
+
+logic_or       -&gt; logic_and ( &quot;||&quot; logic_and )*
+logic_and      -&gt; equality ( &quot;&amp;&amp;&quot; equality )*
+equality       -&gt; comparison ( ( &quot;!=&quot; | &quot;==&quot; ) comparison )*
+comparison     -&gt; term ( ( &quot;&gt;&quot; | &quot;&gt;=&quot; | &quot;&lt;&quot; | &quot;&lt;=&quot; ) term )*
+term           -&gt; factor ( ( &quot;-&quot; | &quot;+&quot; ) factor )*
+factor         -&gt; unary ( ( &quot;/&quot; | &quot;*&quot; ) unary )*
+
+unary          -&gt; ( &quot;!&quot; | &quot;-&quot; ) unary | call 
+call           -&gt; primary ( &quot;(&quot; exprl &quot;)&quot; | &quot;.&quot; identifier )* 
+primary        -&gt; &quot;true&quot; 
+                | &quot;false&quot; 
+                | &quot;none&quot; 
+                | &quot;this&quot;
+                | number 
+                | string 
+                | char
+                | identifier 
+                | &quot;(&quot; expression &quot;)&quot;
+                | &quot;super&quot; &quot;.&quot; identifier 
+</span></code></pre>
+<h2 id="access">Access</h2>
+<p>Access modifiers are used to prohibit certain parts of code from being seen outside the &quot;inner&quot; scope of the instantiater. They may be applied to classes, enums, and functions.</p>
+<table><thead><tr><th>Access Mode</th><th>Short Name</th><th>Effect</th></tr></thead><tbody>
+<tr><td>Public</td><td>pub</td><td>Any outer scope can see the declaration</td></tr>
+<tr><td>Protected</td><td>prot</td><td>Only outer scopes which are a subtype can see the declaration</td></tr>
+<tr><td>Private</td><td>priv</td><td>No outer scopes can see the declaration</td></tr>
+</tbody></table>
+<pre data-lang="ebnf" class="language-ebnf z-code"><code class="language-ebnf" data-lang="ebnf"><span class="z-text z-plain">amod           -&gt; pub
+                | prot
+                | priv
+
+pub            -&gt; &quot;pub&quot; | &quot;public&quot;
+prot           -&gt; &quot;prot&quot; | &quot;protected&quot;
+priv           -&gt; &quot;priv&quot; | &quot;private&quot;
+</span></code></pre>
+<h2 id="instantiation-modifier">Instantiation Modifier</h2>
+<p>the <code>abstract</code> keyword can be used to prohibit instantiation of a class</p>
+<pre data-lang="ebnf" class="language-ebnf z-code"><code class="language-ebnf" data-lang="ebnf"><span class="z-text z-plain">abstract       -&gt; &quot;abstract&quot;
+</span></code></pre>
+<h2 id="functions">Functions</h2>
+<p>Functions and anonymous functions;
+overloading is done with <code>A.SomeFunc()</code> where <code>A</code> is the super class.</p>
+<pre data-lang="ebnf" class="language-ebnf z-code"><code class="language-ebnf" data-lang="ebnf"><span class="z-text z-plain">anonFunc       -&gt; &quot;(&quot; identifierl &quot;)&quot; &quot;-&gt;&quot; block
+fn             -&gt; &quot;fn&quot; (identifier &quot;.&quot;)? identifier (&quot;&lt;&quot; identifierl &quot;&gt;&quot;)? &quot;(&quot; fnDeclArgl &quot;)&quot; &quot;-&gt;&quot; block
+fnDeclArg          -&gt; type &quot;:&quot; identifier
+</span></code></pre>
+<h2 id="types-literals">Types Literals</h2>
+<pre data-lang="ebnf" class="language-ebnf z-code"><code class="language-ebnf" data-lang="ebnf"><span class="z-text z-plain">stype          -&gt; identifier
+atype          -&gt; type &quot;[]&quot;
+gtype          -&gt; identifier &quot;&lt;&quot; identfierl &quot;&gt;&quot;
+otype          -&gt; type &quot;?&quot;
+type           -&gt; stype 
+                | atype 
+                | gtype
+                | otype
+</span></code></pre>
+<h2 id="utilities-lists">Utilities / Lists</h2>
+<pre data-lang="ebnf" class="language-ebnf z-code"><code class="language-ebnf" data-lang="ebnf"><span class="z-text z-plain">typel           -&gt; (type &quot;,&quot;)* type &quot;,&quot;? 
+
+identfierl      -&gt; (identifier &quot;,&quot;)* type &quot;,&quot;?
+
+namespacel      -&gt; (namespace &quot;,&quot;)* namespace &quot;,&quot;?
+
+fnDeclArgl      -&gt; (fnArg &quot;,&quot;)* fnArg &quot;,&quot;?
+
+variantl        -&gt; (varriant &quot;,&quot;)* variant &quot;,&quot;?
+
+exprl           -&gt; (expression &quot;,&quot;)* expression &quot;,&quot;?
+
+inheritl        -&gt; (inherit &quot;,&quot;)* inherit &quot;,&quot;?
+</span></code></pre>
+</details>
+<p>The parser is work in progress, and you can check on the progress at <a href="https://syst3mz.github.io/lalr-generator/">LALR parser generator</a>.</p>
+
+<p><b><a href="#">Back to top</a></b></p>
+    </article>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav>
+        <ul><li class="js"><a class="m-protected" href="#ZXRoYW4uYW5zYnVyZytqb2JzQHByb3Rvbm1haWwuY29t" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/Syst3mz/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li></ul>
+      </nav>
+      <p class="s90">Copyright &copy; 2023 Ethan&#x27;s Portfolio</p>
+      <nav>
+        <ul><li class="s90"> <a href="https://syst3mz.github.io/"> About </a> </li><li class="s90"> <a href="https://syst3mz.github.io/contact/"> Contact </a> </li><li class="s90"> <a href="https://syst3mz.github.io/privacy/"> Privacy </a> </li><li class="s90"> <a href="https://syst3mz.github.io/sitemap.xml" target="_blank"> Sitemap </a> </li></ul>
+      </nav>
+      <p class="s90">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> and <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer>
+<span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

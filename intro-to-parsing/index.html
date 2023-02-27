@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://syst3mz.github.io/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
+  <link rel="stylesheet" href="https://syst3mz.github.io/abridge-switcher.css?h=209a1f16dd0c0675205867ed9acd4c061e165edc5cd4cfee86e5f6e8b3dbe9b3" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <script defer src="https://syst3mz.github.io/abridge-bundle.min.js?h=f0e7958f46d06221e99d6d7f24150858523908ca5ca41865ddfba64bc9466f6a" integrity="sha384-nUzn1rJBMPtXHTJcP76DAl7M3pn9hUVGWBMq6iYleX0NZ/ec+/xQ6nl8iXbBLfCs"></script>
+  <meta name="base" content="https://syst3mz.github.io" />
+  <link rel="alternate" type="application/atom+xml" title="Atom/RSS Feed" href="https://syst3mz.github.io/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Introduction to Parsing | Ethan's Portfolio</title>
+  <meta name="author" content="Ethan Ansburg" />
+  <meta name="copyright" content="Ethan&#x27;s Portfolio" />
+  <meta name="description" content="A website to show off my projects and aspirations." />
+  <link rel="canonical" href="https://syst3mz.github.io/intro-to-parsing/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://syst3mz.github.io/intro-to-parsing/" />
+  <meta name="twitter:url" content="https://syst3mz.github.io/intro-to-parsing/" />
+  <meta property="og:description" content="A website to show off my projects and aspirations." />
+  <meta name="twitter:description" content="A website to show off my projects and aspirations." />
+  <meta property="og:title" content="Introduction to Parsing | Ethan&#x27;s Portfolio" />
+  <meta name="twitter:title" content="Introduction to Parsing | Ethan&#x27;s Portfolio" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://syst3mz.github.io/banner.png" />
+  <meta property="og:image" content="https://syst3mz.github.io/banner.png" />
+  <meta property="og:site_name" content="Ethan&#x27;s Portfolio" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2023-01-23" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <noscript><link rel="stylesheet" href="https://syst3mz.github.io/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><h1><a href="https://syst3mz.github.io/">Ethan Ansburg</a></h1></div>
+      <div>
+        <ul><li> <h2><a href="https://syst3mz.github.io/projects/">Projects</a></h2> </li><li> <h2><a href="https://syst3mz.github.io/resume">Resume</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+      </div>
+      <div>
+        <form autocomplete=off class="js" name="goSearch" id="searchbox">
+          <div class="searchd">
+            <input id="searchinput" type="text" placeholder="Search" title="Search" />
+            <button type="submit" title="Search"><i class="svgs search"></i></button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+        <h1><a href="https://syst3mz.github.io/intro-to-parsing/">Introduction to Parsing</a></h1>
+        <span class="s95"> Ethan Ansburg<span class="hpad"> </span> January 23, 2023<span class="hpad"> </span></span>
+
+    <p>Parsing is the first meaningful step to processing a programming language. But what is parsing?</p>
+<h1 id="parsing-and-lexing-too">Parsing (and Lexing too!)</h1>
+<p>Parsing, in very brief, is taking some string of text and turning it into a something meaningful for the computer.
+Most often, this is an <strong>A</strong>bstract <strong>S</strong>yntax <strong>T</strong>ree (<strong>AST</strong>). An <strong>AST</strong> is a tree where all information that is
+not relevant to the further processing of some source is removed. Consider the following very complex
+expression bellow:</p>
+<pre class="z-code"><code><span class="z-text z-plain">1 + (2 * 4)
+</span></code></pre>
+<p>Before we fall down the rabbit hole, let's first look at what the above expression would appear like as (one) <strong>AST</strong>.</p>
+<p><a rel="noopener" target="_blank" href="https://mermaid.live/edit#pako:eNpVkDEPgjAQhf8KuVEhsQgoDA6GVRfdWoYKBZrQ1tQSQwj_3Vp06E33vnv3krsZatUwKKAd1LvuqTbBvSQysIXwmUuqpyqIolMQ4-soHkxX6zB2cI_RTyOnE0xgS8Bj6T9mhamDmZ-WOXjAsWc64o2nc38pdxDtcFJBCIJpQXljL5m_YwKmZ4IRKGw78K43BIhcrJGORt0mWUNh9MhCGJ8NNazktNNUQNHS4WUpa7hR-rL-play5R0sH4fdVjo"><img src="https://mermaid.ink/img/pako:eNpVkDEPgjAQhf8KuVEhsQgoDA6GVRfdWoYKBZrQ1tQSQwj_3Vp06E33vnv3krsZatUwKKAd1LvuqTbBvSQysIXwmUuqpyqIolMQ4-soHkxX6zB2cI_RTyOnE0xgS8Bj6T9mhamDmZ-WOXjAsWc64o2nc38pdxDtcFJBCIJpQXljL5m_YwKmZ4IRKGw78K43BIhcrJGORt0mWUNh9MhCGJ8NNazktNNUQNHS4WUpa7hR-rL-play5R0sH4fdVjo?type=png" alt="" /></a></p>
+<h2 id="structure-of-an-ast">Structure of an AST</h2>
+<p>Okay, this might look like a lot (and it is) but let's look at it's structure before panicking. The boxes are called <code>nodes</code>. Each <code>node</code> may have a number of <code>children</code>. The directional arrows indicate that
+the node on the pointy end of the arrow is a child of the node at the flat end.</p>
+<h2 id="but-what-does-it-mean">But What Does It Mean?</h2>
+<p>Now, let's start from the top. We see a <code>Binary</code> node, this has no relation to the binary working in you computer; the <code>Binary</code> refers 
+to the number of operands (<code>children</code>) the node has. The addition operation <code>+</code> adds a left hand number (in this case 1) to a right hand number.
+But we don't have a number on the right hand side we have another <code>Binary</code>. That is okay, remember at this point 
+we are not doing any math just giving the input string more meaning for the computer. As a human, 
+it's trivial to tell that the <code>(2 * 4)</code> should be done before the <code>1 +</code> but the computer is not that smart.
+The genius of the <strong>AST</strong> is that we can convey this &quot;do <em>a</em> before <em>b</em>&quot; thinking to the computer.
+When the computer eventually goes to evaluate the tree, the logic is pretty simple.</p>
+<pre data-lang="cs" class="language-cs z-code"><code class="language-cs" data-lang="cs"><span class="z-source z-cs"><span class="z-storage z-type z-cs">int</span> <span class="z-meta z-method z-cs"><span class="z-entity z-name z-function z-cs">eval</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-begin z-cs">(</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-support z-type z-cs">Node</span> <span class="z-variable z-parameter z-cs">n</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-end z-cs">)</span></span><span class="z-meta z-method z-cs"> </span><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span>
+    <span class="z-keyword z-control z-conditional z-if z-cs">if</span> <span class="z-meta z-group z-cs"><span class="z-punctuation z-section z-group z-begin z-cs">(</span></span><span class="z-meta z-group z-cs"><span class="z-variable z-other z-cs">n</span> <span class="z-keyword z-operator z-reflection z-cs">is</span> <span class="z-support z-type z-cs">Binary</span> <span class="z-variable z-other z-cs">b</span></span><span class="z-meta z-group z-cs"><span class="z-punctuation z-section z-group z-end z-cs">)</span></span> <span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span></span><span class="z-meta z-block z-cs">
+        <span class="z-storage z-type z-variable z-cs">var</span> <span class="z-variable z-other z-cs">lhs</span> <span class="z-keyword z-operator z-assignment z-variable z-cs">=</span> <span class="z-meta z-function-call z-cs"><span class="z-variable z-function z-cs">eval</span><span class="z-meta z-group z-cs"><span class="z-punctuation z-section z-group z-begin z-cs">(</span></span></span><span class="z-meta z-function-call z-cs"><span class="z-meta z-group z-cs"><span class="z-variable z-other z-cs">b</span><span class="z-punctuation z-accessor z-dot z-cs">.</span><span class="z-variable z-other z-cs">lhs</span><span class="z-punctuation z-section z-group z-end z-cs">)</span></span></span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+        <span class="z-storage z-type z-variable z-cs">var</span> <span class="z-variable z-other z-cs">rhs</span> <span class="z-keyword z-operator z-assignment z-variable z-cs">=</span> <span class="z-meta z-function-call z-cs"><span class="z-variable z-function z-cs">eval</span><span class="z-meta z-group z-cs"><span class="z-punctuation z-section z-group z-begin z-cs">(</span></span></span><span class="z-meta z-function-call z-cs"><span class="z-meta z-group z-cs"><span class="z-variable z-other z-cs">b</span><span class="z-punctuation z-accessor z-dot z-cs">.</span><span class="z-variable z-other z-cs">rhs</span><span class="z-punctuation z-section z-group z-end z-cs">)</span></span></span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+        <span class="z-keyword z-control z-conditional z-if z-cs">if</span><span class="z-meta z-group z-cs"><span class="z-punctuation z-section z-group z-begin z-cs">(</span></span><span class="z-meta z-group z-cs"><span class="z-variable z-other z-cs">b</span><span class="z-punctuation z-accessor z-dot z-cs">.</span><span class="z-keyword z-other z-cs">operator</span> <span class="z-keyword z-operator z-cs">==</span> <span class="z-variable z-other z-cs">Plus</span></span><span class="z-meta z-group z-cs"><span class="z-punctuation z-section z-group z-end z-cs">)</span></span> <span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span></span><span class="z-meta z-block z-cs">
+            <span class="z-keyword z-control z-flow z-return z-cs">return</span> <span class="z-variable z-other z-cs">lhs</span> <span class="z-keyword z-operator z-cs">+</span> <span class="z-variable z-other z-cs">rhs</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+        </span><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-end z-cs">}</span></span>
+        <span class="z-keyword z-control z-conditional z-else z-cs">else </span><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span></span><span class="z-meta z-block z-cs">
+            <span class="z-keyword z-control z-flow z-return z-cs">return</span> <span class="z-variable z-other z-cs">lhs</span> <span class="z-keyword z-operator z-cs">*</span> <span class="z-variable z-other z-cs">rhs</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+        </span><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-end z-cs">}</span></span>
+    </span><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-end z-cs">}</span></span>
+    <span class="z-keyword z-control z-conditional z-else z-cs">else </span><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span></span><span class="z-meta z-block z-cs">
+        <span class="z-storage z-type z-variable z-cs">var</span> <span class="z-variable z-other z-cs">num</span> <span class="z-keyword z-operator z-assignment z-variable z-cs">=</span> <span class="z-meta z-cast z-cs"><span class="z-punctuation z-section z-group z-begin z-cs">(</span><span class="z-support z-type z-cs">Number</span><span class="z-punctuation z-section z-group z-end z-cs">)</span></span><span class="z-variable z-other z-cs">n</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+        <span class="z-keyword z-control z-flow z-return z-cs">return</span> <span class="z-variable z-other z-cs">num</span><span class="z-punctuation z-accessor z-dot z-cs">.</span><span class="z-variable z-language z-cs">value</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+    </span><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-end z-cs">}</span></span>
+<span class="z-punctuation z-section z-block z-end z-cs">}</span></span></span>
+</span></code></pre>
+<p>The recursive nature of <code>eval</code> is what gives us operator precedence. 
+The <strong>AST</strong> also does not have any of the parentheses, spaces or anything that is not strictly related to the operations
+the computer needs to do to evaluate this expression. The parentheses meaning of &quot;do this first&quot; is encoded in the 
+structure of the tree.</p>
+<h2 id="actually-making-the-tree">Actually Making the Tree</h2>
+<p>Taking the input expression(s) and turning them into an <strong>AST</strong> is the job of a <em>parser</em> and <em>tokenizer</em>.</p>
+<h3 id="tokenizer-lexer">Tokenizer/Lexer</h3>
+<p>Tokenizing has not been mentioned until now, but the tokenizer/lexer is a function that runs before the parser. It (somewhat unsurprisingly)
+turns the input data into a stream of tokens. Tokens are small pieces of a language that can be thought of as &quot;atomic.&quot;
+In the expression above, a token stream would look like:
+<code>NUMBER(1), PLUS, LPAREN, NUMBER(2), STAR, NUMBER(4), RPAREN</code>.
+Now, for making the expression atomic it seems to have gotten...longer? That's because the tokens are &quot;atomic&quot; for the computer
+not necessarily for us. At this point, we no longer have to think about strings, we can think about tokens! Oh, and all the spaces are gone.
+Actually our tokenizer has the superpower of stripping away spaces (anyone who has worked with human text before knows how valuable this is).
+This means that the token stream generated by <code>1+(2* 4)</code> (note the missing spaces) is exactly the same as the token stream generated by <code>1 + (2 * 4)</code>: <code>NUMBER(1), PLUS, LPAREN, NUMBER(2), STAR, NUMBER(4), RPAREN</code>.</p>
+<h3 id="parser">Parser</h3>
+<p>Okay, we have our token stream in hand...what do we do with it? We hand that stream to the parser. The parser is a function
+which takes our token stream as input and produces an <strong>AST</strong> as output. There are quite a few methods to parse, so many in fact
+I think each one should get it's own page. For a good overview I can recommend <a rel="noopener" target="_blank" href="https://medium.com/@chetcorcos/introduction-to-parsers-644d1b5d7f3d">this</a> 
+blog post by Chet Corcos.</p>
+<ul>
+<li>My post on <a href="https://syst3mz.github.io/lalr-generator/">LR &amp; LALR</a></li>
+<li><a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/LL_parser">LL</a></li>
+<li><a rel="noopener" target="_blank" href="https://www.booleanworld.com/building-recursive-descent-parsers-definitive-guide/">Recursive Decent</a></li>
+</ul>
+<p>(This is not a complete list, just common parsers I have run into.)</p>
+
+<p><b><a href="#">Back to top</a></b></p>
+    </article>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav>
+        <ul><li class="js"><a class="m-protected" href="#ZXRoYW4uYW5zYnVyZytqb2JzQHByb3Rvbm1haWwuY29t" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://github.com/Syst3mz/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li></ul>
+      </nav>
+      <p class="s90">Copyright &copy; 2023 Ethan&#x27;s Portfolio</p>
+      <nav>
+        <ul><li class="s90"> <a href="https://syst3mz.github.io/"> About </a> </li><li class="s90"> <a href="https://syst3mz.github.io/contact/"> Contact </a> </li><li class="s90"> <a href="https://syst3mz.github.io/privacy/"> Privacy </a> </li><li class="s90"> <a href="https://syst3mz.github.io/sitemap.xml" target="_blank"> Sitemap </a> </li></ul>
+      </nav>
+      <p class="s90">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> and <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer>
+<span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>
