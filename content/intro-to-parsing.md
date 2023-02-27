@@ -58,10 +58,10 @@ structure of the tree.
 ## Actually making the tree
 Taking the input expression(s) and turning them into an **AST** is the job of a _parser_ and _tokenizer_.
 
-### Tokenizer
-This has not been mentioned until now, but the tokenizer is a function that runs before the parser it (somewhat unsurprisingly)
-turns the input data into a stream of tokens. Tokens are a small pieces of a language that can be thought of as "atomic"
-in the expression above a token stream would look like:
+### Tokenizer/Lexer
+Tokenizing has not been mentioned until now, but the tokenizer/Lexer is a function that runs before the parser. It (somewhat unsurprisingly)
+turns the input data into a stream of tokens. Tokens are small pieces of a language that can be thought of as "atomic".
+In the expression above a token stream would look like:
 `NUMBER(1), PLUS, LPAREN, NUMBER(2), STAR, NUMBER(4), RPAREN`
 Now, for making the expression atomic is seems to have gotten...longer? That's because the tokens are "atomic" for the computer
 not necessarily us. At this point, we no longer have to think about strings we can think about tokens! Oh, and all the spaces are gone.
