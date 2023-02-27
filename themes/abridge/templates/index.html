@@ -22,11 +22,16 @@
   {{- macros_head::seo(config=config, title=title, title_addition=title_addition, description=description, is_home=true) }}
 {%- endblock seo %}
 
-
-
 {%- block content %}
+
     <div>
-    {%- for page in paginator.pages %}
+      <section>
+        <h3>What am I looking at?</h3>
+        <p>Everything bellow is a small repository of projects I am particularly proud of.
+          Clicking the "...more" or the bolded heading will take you to that projects page.
+          You might also be interested in my <a href="/resume">resume</a>.</p>
+      </section>
+      {%- for page in paginator.pages %}
       <article>
         {{- macros::title_index(page=page, config=config) }}
         {%- if config.extra.meta_index.position %}
@@ -58,10 +63,10 @@
   <div class="toc">
     <div class="toc-sticky">
       <h1><span class="s75">Ethan Ansburg</span></h1>
-      <p style="font-size: 2.2vh;">I am a second year computer science student at the University Of Colorado at Boulder with intrests in:</p>
+      <p style="font-size: 2.2vh;">I am a second year computer science student at the University of Colorado at Boulder with interests in:</p>
       <ul style="font-size: 2.2vh;">
         <li>Penetration Testing</li>
-        <li>Programming Language Developement</li>
+        <li>Programming Language Development</li>
         <li>Astronomy</li>
         <li>...and Rocketry</li>
       </ul>

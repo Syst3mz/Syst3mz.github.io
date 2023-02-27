@@ -1,4 +1,4 @@
 +++
-paginate_by = 6
-sort_by = "date"
+paginate_by = 4
+sort_by = "weight"
 +++

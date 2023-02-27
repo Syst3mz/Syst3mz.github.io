@@ -16,7 +16,7 @@ draft = false
 <table>
     <tr>
         <td>
-        <h2>Education<h2>
+        <h2>Education</h2>
             <ul>
                 <li><p>Overall College GPA: 3.35</p></li>
                 <li>University of Colorado at Boulder, Computer Science, Expected Graduation 2025</li>
@@ -36,20 +36,18 @@ draft = false
         </td>
     </tr>
     <tr>
-        <td>
-            <div style="display: inline-block">
-                <h2>Relevant Work Experience</h2>
-                <ul>
-                    <li>
-                        <b>SpyderSec - Penetration Testing Intern (Summer '20)</b>
-                        <ul>
-                            <li>Preform a penetration test against a specific target</li>
-                            <li>Develop custom tools to fuzz and automatically attack endpoints</li>
-                            <li>Produce a report about vulnerabilities found</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+        <td style="vertical-align: top">
+            <h2>Relevant Work Experience</h2>
+            <ul>
+                <li>
+                    <b>SpyderSec - Penetration Testing Intern (Summer '20)</b>
+                    <ul>
+                        <li>Preform a penetration test against a specific target</li>
+                        <li>Develop custom tools to fuzz and automatically attack endpoints</li>
+                        <li>Produce a report about vulnerabilities found</li>
+                    </ul>
+                </li>
+            </ul>    
         </td>
         <td>
             <h2>Technical Skills</h2>
@@ -69,7 +67,7 @@ draft = false
     </tr>
     <tr style="page-break-after: always;">
         <td colspan="3" style="vertical-align: top;">
-            <h2>Clubs & Activities<h2>
+            <h2>Clubs & Activities</h2>
             <ul>
                 <li><h3>Sounding Rockets Lab</h3>
                     <p>A club dedicated to designing and building our own high performance rockets. I work as part of the avionics software sub-team.</p>
@@ -85,7 +83,7 @@ draft = false
     </tr>
     <tr style="page-break-before: always;">
         <td colspan="3">
-            <h2 style="text-align: center">Awards</h2>
+            <h2>Awards</h2>
             <div style="text-align: center">
                 <style>
                     ul.two-col li {
@@ -104,7 +102,7 @@ draft = false
                     <li> Honor Roll (Grandview High School - 2020-2021)</li>
                     <li> National Competitor, 5th place in state, 3rd place in district (<b>F</b>uture <b>B</b>usiness <b>L</b>eaders of <b>A</b>merica - 2017)</li>
                     <li> Sportsmanship Award (Rocky Mountain Regional Silver Sticks Hockey Tournament - 2017)</li>
-                <ul>
+                </ul>
             </div>
         </td>
     </tr>

@@ -1,9 +1,7 @@
 +++
-title = "LALR Parser Generator"
-date = 2023-01-23
+title = "LR & LALR Parsing"
+date = 2022-12-18
+weight = 2
 +++
 
-Parsing, is the first menaingful step to processing a programming language. But what is parsing?
-
-## Parsing
-Parsing, in very brief is taking some string of text and turning it into a something meaningful for the programing language.
+I am still writing this page! In the meantime, why don't you read my [intro to parsing](@/intro-to-parsing.md)
