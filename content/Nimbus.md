@@ -6,14 +6,13 @@ weight = 1
 
 Nimbus is an interpreted multi-paradigm general purpose programming language that I am developing.
 
-Nimbus is designed to be the fastest programming language to write code in, and will make sacrifices in all other areas 
-to meet that goal. I am writing it to increase my productivity as a programmer and as a learning experience.
+I am designing Nimbus to be the fastest programming language to write code in. To meet that goal Nimbus will make sacrifices to its safety and run-time speed. I am writing Nimbus, not only as a learning experience, but to increase my productivity as a programmer.
 
 ## Planned Features
 
 ### Familiar Syntax
 ```nimbus
-fn fibbo(Int:n) -> {
+fn fibbo(Int:n) -> Int {
     if n == 1 || n == 2 {
         return 1
     }
@@ -21,35 +20,34 @@ fn fibbo(Int:n) -> {
     return fibbo(n-1) + fibbo(n-2)
 }
 ```
-### Semi-Colons only where needed
-Note in the above code sample, there are no semicolons. Code blocks, and other "self-ending" language constructs can be 
-semicolon free
+### Semicolons Only Where Needed
+Note in the above code sample, there are no semicolons. Code blocks and other "self-ending" language constructs can be 
+semicolon free.
 
 ### Optional and Result Type Syntax
-any type can be made optional with the addition of a `?`. For example:
+Any type can be made optional with the addition of a `?`. For example:
 ```nimbus
 int: alwaysValue = 2 // There is always a non-none value in alwaysValue
 int?: maybe = 2 // An option type with a value
 int?: no = None // An option type with no value
 ```
-The same syntax can be used to check if a value exists
+The same syntax can be used to check if a value exists.
 ```
 maybe = maybe? + 2
 ```
-If there is no value in `maybe`, if the outer function can return an option then `None` is immediately returned, otherwise 
+If there is no value in `maybe` and if the outer function can return an option, then `None` is immediately returned; otherwise 
 a `ExpectedSome` exception is thrown.
 
 
 ### Garbage Collection
-Supporting the goal of "fast-to-write" automatic memory management is a must. Using garbage collection the programmer is 
-free to work on their problem, not fighting a borrow checker or keeping track of cycles.
+**A**utomatic **M**emory **M**anagement (AMM) is a must to support the goal of "fast-to-write." Nimbus will use a garbage collector to handle AMM. Using a garbage collector lets the programmer focus on the program, not on complex move semantics or preventing memory cycles.
 
 ### Multiple Inheritance
-While problems like the well studied [diamond problem](https://en.wikipedia.org/wiki/Multiple_inheritance#:~:text=The%20%22diamond%20problem%22%20(sometimes,from%20both%20B%20and%20C. )
-exist, it is my opinion that the increase of re-usability in code that multiple inheritance can provide is well worth it.
+Whereas problems like the well studied [diamond problem](https://en.wikipedia.org/wiki/Multiple_inheritance#:~:text=The%20%22diamond%20problem%22%20(sometimes,from%20both%20B%20and%20C. )
+exist, the increase of re-usability in code that multiple inheritance can provide is well worth the challenges associated with multiple inheritance.
 
 ### Function Level Structural Subtyping (Restricted Duck-Typing)
-While multiple inheritance can cover a lot, I feel that allowing functions to explicitly define what they need to work 
+To supplement multiple inheritance, allowing functions to explicitly define what data they need to work 
 will allow a massive increase in re-usability.
 ```nimbus
 // syntax under heavy development!!!
@@ -59,24 +57,18 @@ fn add_one<T: T.Int:number>(T:holder) {
 ```
 
 ### Tagged & Generic Enums + Pattern Matching
-Ripped straight from [Rust](https://www.rust-lang.org/), they allow much more expressive and correct code.
+Nimbus will rip [Rust's](https://www.rust-lang.org/) excellent enums and pattern matching because they allow expressive and correct code.
 
 ### Gradual Correctness
-The Nimbus interpreter will have multiple modes, each more strict than the last. Allow the computer to the hard work of 
-finding bugs, free up the human to fix them. Further, the programmer may select the level of safety they want. If they want to
-hack something together real quick, throw exceptions go wild. If they want to make code that never crashes? go ahead! The compiler will
-support you all the way through
+The Nimbus compiler will have multiple levels of safety with safer code requiring stricter compile-time checks. The programmer may chose to hack something together quickly using exceptions to handle errors. Later, they can come back switch a compiler flag, and the Nimbus compiler will enforce safety.
 
-
-## Goals
-
-### Co-pilot Interpreter
-For the co-pilot, the interpreter must be able to run in an "interactive" mode, where a file is watched and AST is generated in realtime for reporting to the IDE. It should provide fixes in real time as errors occur. The Interpreter should assume what the developer is *wrong* because as they are writing it, their code is almost certainly wrong.
+### Co-pilot Compiler
+For the co-pilot, the compiler must be able to run in an "interactive" mode, where a file is watched and an AST is generated in real time for reporting to the IDE. It will provide fixes in real time as errors occur. The compiler should assume that the developer is *wrong* because as they are writing it, their code is almost certainly wrong. 
 
 # Progress
 <details>
 <summary>
-    Work in progress grammar for Nimbus
+    Nimbus's grammar (work in progress)
 </summary>
 
 ```ebnf
@@ -178,15 +170,15 @@ prot           -> "prot" | "protected"
 priv           -> "priv" | "private"
 ```
 
-## Instantiation modifier
-the `abstract` keyword can be used to prohibit instantiation of a class.
+## Instantiation Modifier
+the `abstract` keyword can be used to prohibit instantiation of a class
 ```ebnf
 abstract       -> "abstract"
 ```
 
 ## Functions
-Functions and anonymous functions.
-Overloading is done with `A.SomeFunc()` where `A` is the super class.
+Functions and anonymous functions;
+overloading is done with `A.SomeFunc()` where `A` is the super class.
 ```ebnf
 anonFunc       -> "(" identifierl ")" "->" block
 fn             -> "fn" (identifier ".")? identifier ("<" identifierl ">")? "(" fnDeclArgl ")" "->" block

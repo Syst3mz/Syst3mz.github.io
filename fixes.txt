@@ -1,6 +1,2 @@
-guide posts
-
-
-switched to past tense
-
-add cyber quest
+make website link look link like when printed.
+Add line to resume to distinguish
