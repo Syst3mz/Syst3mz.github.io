@@ -24,4 +24,4 @@ Astrophotography is the art of taking images of space. I find it to be a relaxin
 Deep Sky Objects (DSO) are celestial bodies that are particularly far away or dim. These are often things like nebulae and galaxies. 
 
 ## Why don't you image them, they look the coolest?
-I am working on it, however due to how dim DSOs are, you need the ability to track their positions very precisely to allow more particles of light to reach the camera's sensor. I am working on upgrading my telescope with this capability, but I'm not there yet.
+I am working on it; however due to how dim DSOs are, you need the ability to track their positions very precisely to allow more particles of light to reach the camera's sensor. Soon I will upgrade my telescope with this capability, but I'm not there yet.
