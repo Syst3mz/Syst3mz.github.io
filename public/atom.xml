@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Ethan&#x27;s Portfolio</title>
+	<subtitle>A website to show off my projects and aspirations.</subtitle>
+	<link href="https://syst3mz.github.io/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://syst3mz.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2023-01-23T00:00:00+00:00</updated>
+	<id>https://syst3mz.github.io/atom.xml</id>
+	<entry xml:lang="en">
+		<title>Introduction to Parsing</title>
+		<published>2023-01-23T00:00:00+00:00</published>
+		<updated>2023-01-23T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://syst3mz.github.io/intro-to-parsing/" type="text/html"/>
+		<id>https://syst3mz.github.io/intro-to-parsing/</id>
+		<content type="html">&lt;p&gt;Parsing is the first meaningful step to processing a programming language. But what is parsing?&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;parsing-and-lexing-too&quot;&gt;Parsing (and Lexing too!)&lt;&#x2F;h1&gt;
+&lt;p&gt;Parsing, in very brief, is taking some string of text and turning it into a something meaningful for the computer.
+Most often, this is an &lt;strong&gt;A&lt;&#x2F;strong&gt;bstract &lt;strong&gt;S&lt;&#x2F;strong&gt;yntax &lt;strong&gt;T&lt;&#x2F;strong&gt;ree (&lt;strong&gt;AST&lt;&#x2F;strong&gt;). An &lt;strong&gt;AST&lt;&#x2F;strong&gt; is a tree where all information that is
+not relevant to the further processing of some source is removed. Consider the following very complex
+expression bellow:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;1 + (2 * 4)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Before we fall down the rabbit hole, let&#x27;s first look at what the above expression would appear like as (one) &lt;strong&gt;AST&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;mermaid.live&#x2F;edit#pako:eNpVkDEPgjAQhf8KuVEhsQgoDA6GVRfdWoYKBZrQ1tQSQwj_3Vp06E33vnv3krsZatUwKKAd1LvuqTbBvSQysIXwmUuqpyqIolMQ4-soHkxX6zB2cI_RTyOnE0xgS8Bj6T9mhamDmZ-WOXjAsWc64o2nc38pdxDtcFJBCIJpQXljL5m_YwKmZ4IRKGw78K43BIhcrJGORt0mWUNh9MhCGJ8NNazktNNUQNHS4WUpa7hR-rL-play5R0sH4fdVjo&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;mermaid.ink&#x2F;img&#x2F;pako:eNpVkDEPgjAQhf8KuVEhsQgoDA6GVRfdWoYKBZrQ1tQSQwj_3Vp06E33vnv3krsZatUwKKAd1LvuqTbBvSQysIXwmUuqpyqIolMQ4-soHkxX6zB2cI_RTyOnE0xgS8Bj6T9mhamDmZ-WOXjAsWc64o2nc38pdxDtcFJBCIJpQXljL5m_YwKmZ4IRKGw78K43BIhcrJGORt0mWUNh9MhCGJ8NNazktNNUQNHS4WUpa7hR-rL-play5R0sH4fdVjo?type=png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;structure-of-an-ast&quot;&gt;Structure of an AST&lt;&#x2F;h2&gt;
+&lt;p&gt;Okay, this might look like a lot (and it is) but let&#x27;s look at it&#x27;s structure before panicking. The boxes are called &lt;code&gt;nodes&lt;&#x2F;code&gt;. Each &lt;code&gt;node&lt;&#x2F;code&gt; may have a number of &lt;code&gt;children&lt;&#x2F;code&gt;. The directional arrows indicate that
+the node on the pointy end of the arrow is a child of the node at the flat end.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;but-what-does-it-mean&quot;&gt;But What Does It Mean?&lt;&#x2F;h2&gt;
+&lt;p&gt;Now, let&#x27;s start from the top. We see a &lt;code&gt;Binary&lt;&#x2F;code&gt; node, this has no relation to the binary working in you computer; the &lt;code&gt;Binary&lt;&#x2F;code&gt; refers 
+to the number of operands (&lt;code&gt;children&lt;&#x2F;code&gt;) the node has. The addition operation &lt;code&gt;+&lt;&#x2F;code&gt; adds a left hand number (in this case 1) to a right hand number.
+But we don&#x27;t have a number on the right hand side we have another &lt;code&gt;Binary&lt;&#x2F;code&gt;. That is okay, remember at this point 
+we are not doing any math just giving the input string more meaning for the computer. As a human, 
+it&#x27;s trivial to tell that the &lt;code&gt;(2 * 4)&lt;&#x2F;code&gt; should be done before the &lt;code&gt;1 +&lt;&#x2F;code&gt; but the computer is not that smart.
+The genius of the &lt;strong&gt;AST&lt;&#x2F;strong&gt; is that we can convey this &amp;quot;do &lt;em&gt;a&lt;&#x2F;em&gt; before &lt;em&gt;b&lt;&#x2F;em&gt;&amp;quot; thinking to the computer.
+When the computer eventually goes to evaluate the tree, the logic is pretty simple.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;cs&quot; class=&quot;language-cs z-code&quot;&gt;&lt;code class=&quot;language-cs&quot; data-lang=&quot;cs&quot;&gt;&lt;span class=&quot;z-source z-cs&quot;&gt;&lt;span class=&quot;z-storage z-type z-cs&quot;&gt;int&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-method z-cs&quot;&gt;&lt;span class=&quot;z-entity z-name z-function z-cs&quot;&gt;eval&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-method z-parameters z-cs&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-begin z-cs&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-method z-parameters z-cs&quot;&gt;&lt;span class=&quot;z-support z-type z-cs&quot;&gt;Node&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-parameter z-cs&quot;&gt;n&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-method z-parameters z-cs&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-end z-cs&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-method z-cs&quot;&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-method z-body z-cs&quot;&gt;&lt;span class=&quot;z-meta z-block z-cs&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-cs&quot;&gt;{&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-keyword z-control z-conditional z-if z-cs&quot;&gt;if&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-group z-cs&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-group z-begin z-cs&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-cs&quot;&gt;&lt;span class=&quot;z-variable z-other z-cs&quot;&gt;n&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-reflection z-cs&quot;&gt;is&lt;&#x2F;span&gt; &lt;span class=&quot;z-support z-type z-cs&quot;&gt;Binary&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-cs&quot;&gt;b&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-cs&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-cs&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-block z-cs&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-cs&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-cs&quot;&gt;
+        &lt;span class=&quot;z-storage z-type z-variable z-cs&quot;&gt;var&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-cs&quot;&gt;lhs&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-variable z-cs&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-cs&quot;&gt;&lt;span class=&quot;z-variable z-function z-cs&quot;&gt;eval&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-cs&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-group z-begin z-cs&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-cs&quot;&gt;&lt;span class=&quot;z-meta z-group z-cs&quot;&gt;&lt;span class=&quot;z-variable z-other z-cs&quot;&gt;b&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-cs&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-cs&quot;&gt;lhs&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-cs&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-statement z-cs&quot;&gt;;&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-storage z-type z-variable z-cs&quot;&gt;var&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-cs&quot;&gt;rhs&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-variable z-cs&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-cs&quot;&gt;&lt;span class=&quot;z-variable z-function z-cs&quot;&gt;eval&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-cs&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-group z-begin z-cs&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-cs&quot;&gt;&lt;span class=&quot;z-meta z-group z-cs&quot;&gt;&lt;span class=&quot;z-variable z-other z-cs&quot;&gt;b&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-cs&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-cs&quot;&gt;rhs&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-cs&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-statement z-cs&quot;&gt;;&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-keyword z-control z-conditional z-if z-cs&quot;&gt;if&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-cs&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-group z-begin z-cs&quot;&gt;(&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-cs&quot;&gt;&lt;span class=&quot;z-variable z-other z-cs&quot;&gt;b&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-cs&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-other z-cs&quot;&gt;operator&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-cs&quot;&gt;==&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-cs&quot;&gt;Plus&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-cs&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-cs&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-block z-cs&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-cs&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-cs&quot;&gt;
+            &lt;span class=&quot;z-keyword z-control z-flow z-return z-cs&quot;&gt;return&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-cs&quot;&gt;lhs&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-cs&quot;&gt;+&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-cs&quot;&gt;rhs&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-statement z-cs&quot;&gt;;&lt;&#x2F;span&gt;
+        &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-cs&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-end z-cs&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-keyword z-control z-conditional z-else z-cs&quot;&gt;else &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-cs&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-cs&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-cs&quot;&gt;
+            &lt;span class=&quot;z-keyword z-control z-flow z-return z-cs&quot;&gt;return&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-cs&quot;&gt;lhs&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-cs&quot;&gt;*&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-cs&quot;&gt;rhs&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-statement z-cs&quot;&gt;;&lt;&#x2F;span&gt;
+        &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-cs&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-end z-cs&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-cs&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-end z-cs&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+    &lt;span class=&quot;z-keyword z-control z-conditional z-else z-cs&quot;&gt;else &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-cs&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-cs&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-cs&quot;&gt;
+        &lt;span class=&quot;z-storage z-type z-variable z-cs&quot;&gt;var&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-cs&quot;&gt;num&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-assignment z-variable z-cs&quot;&gt;=&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-cast z-cs&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-group z-begin z-cs&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-support z-type z-cs&quot;&gt;Number&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-group z-end z-cs&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-cs&quot;&gt;n&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-statement z-cs&quot;&gt;;&lt;&#x2F;span&gt;
+        &lt;span class=&quot;z-keyword z-control z-flow z-return z-cs&quot;&gt;return&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-cs&quot;&gt;num&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-dot z-cs&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-language z-cs&quot;&gt;value&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-terminator z-statement z-cs&quot;&gt;;&lt;&#x2F;span&gt;
+    &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-cs&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-end z-cs&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;z-punctuation z-section z-block z-end z-cs&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The recursive nature of &lt;code&gt;eval&lt;&#x2F;code&gt; is what gives us operator precedence. 
+The &lt;strong&gt;AST&lt;&#x2F;strong&gt; also does not have any of the parentheses, spaces or anything that is not strictly related to the operations
+the computer needs to do to evaluate this expression. The parentheses meaning of &amp;quot;do this first&amp;quot; is encoded in the 
+structure of the tree.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;actually-making-the-tree&quot;&gt;Actually Making the Tree&lt;&#x2F;h2&gt;
+&lt;p&gt;Taking the input expression(s) and turning them into an &lt;strong&gt;AST&lt;&#x2F;strong&gt; is the job of a &lt;em&gt;parser&lt;&#x2F;em&gt; and &lt;em&gt;tokenizer&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;tokenizer-lexer&quot;&gt;Tokenizer&#x2F;Lexer&lt;&#x2F;h3&gt;
+&lt;p&gt;Tokenizing has not been mentioned until now, but the tokenizer&#x2F;lexer is a function that runs before the parser. It (somewhat unsurprisingly)
+turns the input data into a stream of tokens. Tokens are small pieces of a language that can be thought of as &amp;quot;atomic.&amp;quot;
+In the expression above, a token stream would look like:
+&lt;code&gt;NUMBER(1), PLUS, LPAREN, NUMBER(2), STAR, NUMBER(4), RPAREN&lt;&#x2F;code&gt;.
+Now, for making the expression atomic it seems to have gotten...longer? That&#x27;s because the tokens are &amp;quot;atomic&amp;quot; for the computer
+not necessarily for us. At this point, we no longer have to think about strings, we can think about tokens! Oh, and all the spaces are gone.
+Actually our tokenizer has the superpower of stripping away spaces (anyone who has worked with human text before knows how valuable this is).
+This means that the token stream generated by &lt;code&gt;1+(2* 4)&lt;&#x2F;code&gt; (note the missing spaces) is exactly the same as the token stream generated by &lt;code&gt;1 + (2 * 4)&lt;&#x2F;code&gt;: &lt;code&gt;NUMBER(1), PLUS, LPAREN, NUMBER(2), STAR, NUMBER(4), RPAREN&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;parser&quot;&gt;Parser&lt;&#x2F;h3&gt;
+&lt;p&gt;Okay, we have our token stream in hand...what do we do with it? We hand that stream to the parser. The parser is a function
+which takes our token stream as input and produces an &lt;strong&gt;AST&lt;&#x2F;strong&gt; as output. There are quite a few methods to parse, so many in fact
+I think each one should get it&#x27;s own page. For a good overview I can recommend &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;medium.com&#x2F;@chetcorcos&#x2F;introduction-to-parsers-644d1b5d7f3d&quot;&gt;this&lt;&#x2F;a&gt; 
+blog post by Chet Corcos.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;My post on &lt;a href=&quot;https:&#x2F;&#x2F;syst3mz.github.io&#x2F;lalr-generator&#x2F;&quot;&gt;LR &amp;amp; LALR&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;LL_parser&quot;&gt;LL&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.booleanworld.com&#x2F;building-recursive-descent-parsers-definitive-guide&#x2F;&quot;&gt;Recursive Decent&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;(This is not a complete list, just common parsers I have run into.)&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>LR &amp; LALR Parsing</title>
+		<published>2022-12-18T00:00:00+00:00</published>
+		<updated>2022-12-18T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://syst3mz.github.io/lalr-generator/" type="text/html"/>
+		<id>https://syst3mz.github.io/lalr-generator/</id>
+		<content type="html">&lt;p&gt;This page assumes you have read at least &lt;a href=&quot;https:&#x2F;&#x2F;syst3mz.github.io&#x2F;intro-to-parsing&#x2F;&quot;&gt;intro to parsing&lt;&#x2F;a&gt; or know what parsing is.
+LR and by extension LALR parsers are a type of parser which creates the &lt;strong&gt;AST&lt;&#x2F;strong&gt; bottom up, and reads the input left-to-right.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;a-quick-note-on-notation&quot;&gt;A Quick Note on Notation&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;ebnf&quot; class=&quot;language-ebnf z-code&quot;&gt;&lt;code class=&quot;language-ebnf&quot; data-lang=&quot;ebnf&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;S -&amp;gt; A &amp;quot;c&amp;quot;
+A -&amp;gt; &amp;quot;ab&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;What are you looking at? In very brief, above is a &lt;em&gt;grammar&lt;&#x2F;em&gt;. Grammars define a &lt;em&gt;language&lt;&#x2F;em&gt;, and a language is the set of all strings
+that fit a grammar. Read it from top-to-bottom and left to right.&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;S&lt;&#x2F;code&gt; is a &amp;quot;non-terminal&amp;quot;, meaning it&#x27;s not a string literal.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;-&amp;gt;&lt;&#x2F;code&gt; says &amp;quot;Wherever you see what precedes me, you can replace it with what succeeds me.&amp;quot;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;A&lt;&#x2F;code&gt; is another &amp;quot;non-terminal&amp;quot;. A non-terminal on the right side of an arrow shows the power of grammars. Grammars alllow embedding non-terminals within non-terminals, to create more complex languages.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;c&amp;quot;&lt;&#x2F;code&gt; a string literal, the only kind of &amp;quot;terminal&amp;quot; that exists.  Additionally, its position after &lt;code&gt;A&lt;&#x2F;code&gt; indicates that &lt;code&gt;&amp;quot;c&amp;quot;&lt;&#x2F;code&gt; must follow a &lt;code&gt;A&lt;&#x2F;code&gt;.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;One important assumption made is that any amount of whitespace may occur between parts of a non-terminal on the right side of an arrow.&lt;&#x2F;p&gt;
+&lt;p&gt;See if you can determine if the following strings fit in the language defined above. Click the following strings below to see if they are in the language.&lt;&#x2F;p&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;abc&quot;&lt;&#x2F;summary&gt;
+✅ Yep, this one works
+&lt;&#x2F;details&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;abcc&quot;&lt;&#x2F;summary&gt;
+❌ Nope, the second c makes this string not part of the language defined above.
+&lt;&#x2F;details&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;ababc&quot;&lt;&#x2F;summary&gt;
+❌ Nope, the second ab makes this string not part of the language defined above.
+&lt;&#x2F;details&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;ab c&quot;&lt;&#x2F;summary&gt;
+✅ Yep, this one works. Remember that for this notation any amount of whitespace may follow.
+&lt;&#x2F;details&gt;
+&lt;h2 id=&quot;bottom-up&quot;&gt;Bottom up&lt;&#x2F;h2&gt;
+&lt;p&gt;Just what does it mean to make the &lt;strong&gt;AST&lt;&#x2F;strong&gt; from the bottom up? Check back later for more information!&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Proof of Work</title>
+		<published>2022-12-18T00:00:00+00:00</published>
+		<updated>2022-12-18T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://syst3mz.github.io/proof-of-work/" type="text/html"/>
+		<id>https://syst3mz.github.io/proof-of-work/</id>
+		<content type="html">&lt;p&gt;This website, is coded by me using the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;&quot;&gt;Zola&lt;&#x2F;a&gt; Static-Site-Generator, using the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;abridge.netlify.app&#x2F;&quot;&gt;Abridge&lt;&#x2F;a&gt; theme. The website is hosted with ❤️ on Github Pages.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;experience-using-zola&quot;&gt;Experience Using Zola&lt;&#x2F;h3&gt;
+&lt;p&gt;My experience using Zola has been largely good, however there a few major complaints I have about the system. &lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Using themes is hard...You have to specify to use the theme&#x27;s version of index.html and page for every page you make. This inefficiency can make changing themes hard.&lt;&#x2F;li&gt;
+&lt;li&gt;Sections are hard to wrap your head around. I think most of the challenge comes down to section configuration being handled by a file called &lt;code&gt;_index.html&lt;&#x2F;code&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;The docs, are very clearly designed with a blog in mind...which is a benefit if you&#x27;re making a blog. However, it&#x27;s hard to apply that same structure to other kinds of web pages.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Despite these complaints, Zola and Abridge have made this project much easier. So thanks Zola and Abridge!&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Nimbus</title>
+		<published>2022-02-01T00:00:00+00:00</published>
+		<updated>2022-02-01T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://syst3mz.github.io/nimbus/" type="text/html"/>
+		<id>https://syst3mz.github.io/nimbus/</id>
+		<content type="html">&lt;p&gt;Nimbus is an interpreted multi-paradigm general purpose programming language that I am developing.&lt;&#x2F;p&gt;
+&lt;p&gt;I am designing Nimbus to be the fastest programming language to write code in. To meet that goal Nimbus will make sacrifices to its safety and run-time speed. I am writing Nimbus, not only as a learning experience, but to increase my productivity as a programmer.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;planned-features&quot;&gt;Planned Features&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;familiar-syntax&quot;&gt;Familiar Syntax&lt;&#x2F;h3&gt;
+&lt;pre data-lang=&quot;nimbus&quot; class=&quot;language-nimbus z-code&quot;&gt;&lt;code class=&quot;language-nimbus&quot; data-lang=&quot;nimbus&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;fn fibbo(Int:n) -&amp;gt; Int {
+    if n == 1 || n == 2 {
+        return 1
+    }
+
+    return fibbo(n-1) + fibbo(n-2)
+}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;semicolons-only-where-needed&quot;&gt;Semicolons Only Where Needed&lt;&#x2F;h3&gt;
+&lt;p&gt;Note in the above code sample, there are no semicolons. Code blocks and other &amp;quot;self-ending&amp;quot; language constructs can be 
+semicolon free.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;optional-and-result-type-syntax&quot;&gt;Optional and Result Type Syntax&lt;&#x2F;h3&gt;
+&lt;p&gt;Any type can be made optional with the addition of a &lt;code&gt;?&lt;&#x2F;code&gt;. For example:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;nimbus&quot; class=&quot;language-nimbus z-code&quot;&gt;&lt;code class=&quot;language-nimbus&quot; data-lang=&quot;nimbus&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;int: alwaysValue = 2 &#x2F;&#x2F; There is always a non-none value in alwaysValue
+int?: maybe = 2 &#x2F;&#x2F; An option type with a value
+int?: no = None &#x2F;&#x2F; An option type with no value
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The same syntax can be used to check if a value exists.&lt;&#x2F;p&gt;
+&lt;pre class=&quot;z-code&quot;&gt;&lt;code&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;maybe = maybe? + 2
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;If there is no value in &lt;code&gt;maybe&lt;&#x2F;code&gt; and if the outer function can return an option, then &lt;code&gt;None&lt;&#x2F;code&gt; is immediately returned; otherwise 
+a &lt;code&gt;ExpectedSome&lt;&#x2F;code&gt; exception is thrown.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;garbage-collection&quot;&gt;Garbage Collection&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;strong&gt;A&lt;&#x2F;strong&gt;utomatic &lt;strong&gt;M&lt;&#x2F;strong&gt;emory &lt;strong&gt;M&lt;&#x2F;strong&gt;anagement (AMM) is a must to support the goal of &amp;quot;fast-to-write.&amp;quot; Nimbus will use a garbage collector to handle AMM. Using a garbage collector lets the programmer focus on the program, not on complex move semantics or preventing memory cycles.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;multiple-inheritance&quot;&gt;Multiple Inheritance&lt;&#x2F;h3&gt;
+&lt;p&gt;Whereas problems like the well studied &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Multiple_inheritance#:~:text=The%20%22diamond%20problem%22%20(sometimes,from%20both%20B%20and%20C.&quot;&gt;diamond problem&lt;&#x2F;a&gt;
+exist, the increase of re-usability in code that multiple inheritance can provide is well worth the challenges associated with multiple inheritance.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;function-level-structural-subtyping-restricted-duck-typing&quot;&gt;Function Level Structural Subtyping (Restricted Duck-Typing)&lt;&#x2F;h3&gt;
+&lt;p&gt;To supplement multiple inheritance, allowing functions to explicitly define what data they need to work 
+will allow a massive increase in re-usability.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;nimbus&quot; class=&quot;language-nimbus z-code&quot;&gt;&lt;code class=&quot;language-nimbus&quot; data-lang=&quot;nimbus&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;&#x2F;&#x2F; syntax under heavy development!!!
+fn add_one&amp;lt;T: T.Int:number&amp;gt;(T:holder) {
+    holder.number += 1
+}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;tagged-generic-enums-pattern-matching&quot;&gt;Tagged &amp;amp; Generic Enums + Pattern Matching&lt;&#x2F;h3&gt;
+&lt;p&gt;Nimbus will rip &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.rust-lang.org&#x2F;&quot;&gt;Rust&#x27;s&lt;&#x2F;a&gt; excellent enums and pattern matching because they allow expressive and correct code.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;gradual-correctness&quot;&gt;Gradual Correctness&lt;&#x2F;h3&gt;
+&lt;p&gt;The Nimbus compiler will have multiple levels of safety with safer code requiring stricter compile-time checks. The programmer may chose to hack something together quickly using exceptions to handle errors. Later, they can come back switch a compiler flag, and the Nimbus compiler will enforce safety.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;co-pilot-compiler&quot;&gt;Co-pilot Compiler&lt;&#x2F;h3&gt;
+&lt;p&gt;For the co-pilot, the compiler must be able to run in an &amp;quot;interactive&amp;quot; mode, where a file is watched and an AST is generated in real time for reporting to the IDE. It will provide fixes in real time as errors occur. The compiler should assume that the developer is &lt;em&gt;wrong&lt;&#x2F;em&gt; because as they are writing it, their code is almost certainly wrong. &lt;&#x2F;p&gt;
+&lt;h1 id=&quot;progress&quot;&gt;Progress&lt;&#x2F;h1&gt;
+&lt;details&gt;
+&lt;summary&gt;
+    Nimbus&#x27;s grammar (work in progress)
+&lt;&#x2F;summary&gt;
+&lt;pre data-lang=&quot;ebnf&quot; class=&quot;language-ebnf z-code&quot;&gt;&lt;code class=&quot;language-ebnf&quot; data-lang=&quot;ebnf&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;program        -&amp;gt; declaration+
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;declarations&quot;&gt;Declarations&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;ebnf&quot; class=&quot;language-ebnf z-code&quot;&gt;&lt;code class=&quot;language-ebnf&quot; data-lang=&quot;ebnf&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;declaration    -&amp;gt; abstract? classDecl
+				| fnDecl
+				| varDecl
+				| enumDecl
+				| useDecl
+
+classDecl      -&amp;gt; &amp;quot;class&amp;quot; identifier (&amp;quot;&amp;lt;&amp;quot; identifierl &amp;quot;&amp;gt;&amp;quot;)? inheritl? &amp;quot;{&amp;quot; classitem* &amp;quot;}&amp;quot;
+inherit        -&amp;gt; &amp;quot;:&amp;quot; (gtype | stype)
+classitem      -&amp;gt; amod classDecl
+                | amod fnDecl
+                | amod varDecl
+                | useDecl
+                
+
+funDecl        -&amp;gt; fn
+
+varDecl        -&amp;gt; &amp;quot;imut&amp;quot;? &amp;quot;var&amp;quot; (type &amp;quot;:&amp;quot; )? identifier (&amp;quot;=&amp;quot; expression)?
+
+useDecl        -&amp;gt; &amp;quot;use&amp;quot; namespace (&amp;quot;as&amp;quot; identifier)?
+namespace      -&amp;gt; (identifier &amp;quot;.&amp;quot;)* identifier
+
+enumDecl       -&amp;gt; &amp;quot;enum&amp;quot; identifier (&amp;quot;&amp;lt;&amp;quot; identifierl &amp;quot;&amp;gt;&amp;quot;)? &amp;quot;{&amp;quot; varientl &amp;quot;}&amp;quot;
+variant        -&amp;gt; identifier (&amp;quot;(&amp;quot; typel &amp;quot;)&amp;quot;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;statements&quot;&gt;Statements&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;ebnf&quot; class=&quot;language-ebnf z-code&quot;&gt;&lt;code class=&quot;language-ebnf&quot; data-lang=&quot;ebnf&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;statement      -&amp;gt; exprStmt
+                | forStmt
+                | ifStmt
+                | returnStmt
+                | whileStmt
+                | block
+
+exprStmt       -&amp;gt; expression &amp;quot;;&amp;quot;
+forStmt        -&amp;gt; &amp;quot;for&amp;quot; identifier &amp;quot;in&amp;quot; expression block
+ifStmt         -&amp;gt; if
+returnStmt     -&amp;gt; &amp;quot;return&amp;quot; expression?
+whileStmt      -&amp;gt; &amp;quot;while&amp;quot; expression block
+block          -&amp;gt; &amp;quot;{&amp;quot; (varDecl | statment)* expression?&amp;quot;}&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;expressions&quot;&gt;Expressions&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;ebnf&quot; class=&quot;language-ebnf z-code&quot;&gt;&lt;code class=&quot;language-ebnf&quot; data-lang=&quot;ebnf&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;expression     -&amp;gt; assignment
+                | if
+                
+if             -&amp;gt; &amp;quot;if&amp;quot; expression block else?
+else           -&amp;gt; (&amp;quot;else&amp;quot; &amp;quot;if&amp;quot; expression block)* &amp;quot;else&amp;quot; block
+
+assignment     -&amp;gt; ( call &amp;quot;.&amp;quot; )? identifier &amp;quot;=&amp;quot; assignment
+               | logic_or
+
+logic_or       -&amp;gt; logic_and ( &amp;quot;||&amp;quot; logic_and )*
+logic_and      -&amp;gt; equality ( &amp;quot;&amp;amp;&amp;amp;&amp;quot; equality )*
+equality       -&amp;gt; comparison ( ( &amp;quot;!=&amp;quot; | &amp;quot;==&amp;quot; ) comparison )*
+comparison     -&amp;gt; term ( ( &amp;quot;&amp;gt;&amp;quot; | &amp;quot;&amp;gt;=&amp;quot; | &amp;quot;&amp;lt;&amp;quot; | &amp;quot;&amp;lt;=&amp;quot; ) term )*
+term           -&amp;gt; factor ( ( &amp;quot;-&amp;quot; | &amp;quot;+&amp;quot; ) factor )*
+factor         -&amp;gt; unary ( ( &amp;quot;&#x2F;&amp;quot; | &amp;quot;*&amp;quot; ) unary )*
+
+unary          -&amp;gt; ( &amp;quot;!&amp;quot; | &amp;quot;-&amp;quot; ) unary | call 
+call           -&amp;gt; primary ( &amp;quot;(&amp;quot; exprl &amp;quot;)&amp;quot; | &amp;quot;.&amp;quot; identifier )* 
+primary        -&amp;gt; &amp;quot;true&amp;quot; 
+                | &amp;quot;false&amp;quot; 
+                | &amp;quot;none&amp;quot; 
+                | &amp;quot;this&amp;quot;
+                | number 
+                | string 
+                | char
+                | identifier 
+                | &amp;quot;(&amp;quot; expression &amp;quot;)&amp;quot;
+                | &amp;quot;super&amp;quot; &amp;quot;.&amp;quot; identifier 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;access&quot;&gt;Access&lt;&#x2F;h2&gt;
+&lt;p&gt;Access modifiers are used to prohibit certain parts of code from being seen outside the &amp;quot;inner&amp;quot; scope of the instantiater. They may be applied to classes, enums, and functions.&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Access Mode&lt;&#x2F;th&gt;&lt;th&gt;Short Name&lt;&#x2F;th&gt;&lt;th&gt;Effect&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;Public&lt;&#x2F;td&gt;&lt;td&gt;pub&lt;&#x2F;td&gt;&lt;td&gt;Any outer scope can see the declaration&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Protected&lt;&#x2F;td&gt;&lt;td&gt;prot&lt;&#x2F;td&gt;&lt;td&gt;Only outer scopes which are a subtype can see the declaration&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Private&lt;&#x2F;td&gt;&lt;td&gt;priv&lt;&#x2F;td&gt;&lt;td&gt;No outer scopes can see the declaration&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;pre data-lang=&quot;ebnf&quot; class=&quot;language-ebnf z-code&quot;&gt;&lt;code class=&quot;language-ebnf&quot; data-lang=&quot;ebnf&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;amod           -&amp;gt; pub
+                | prot
+                | priv
+
+pub            -&amp;gt; &amp;quot;pub&amp;quot; | &amp;quot;public&amp;quot;
+prot           -&amp;gt; &amp;quot;prot&amp;quot; | &amp;quot;protected&amp;quot;
+priv           -&amp;gt; &amp;quot;priv&amp;quot; | &amp;quot;private&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;instantiation-modifier&quot;&gt;Instantiation Modifier&lt;&#x2F;h2&gt;
+&lt;p&gt;the &lt;code&gt;abstract&lt;&#x2F;code&gt; keyword can be used to prohibit instantiation of a class&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ebnf&quot; class=&quot;language-ebnf z-code&quot;&gt;&lt;code class=&quot;language-ebnf&quot; data-lang=&quot;ebnf&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;abstract       -&amp;gt; &amp;quot;abstract&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;functions&quot;&gt;Functions&lt;&#x2F;h2&gt;
+&lt;p&gt;Functions and anonymous functions;
+overloading is done with &lt;code&gt;A.SomeFunc()&lt;&#x2F;code&gt; where &lt;code&gt;A&lt;&#x2F;code&gt; is the super class.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ebnf&quot; class=&quot;language-ebnf z-code&quot;&gt;&lt;code class=&quot;language-ebnf&quot; data-lang=&quot;ebnf&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;anonFunc       -&amp;gt; &amp;quot;(&amp;quot; identifierl &amp;quot;)&amp;quot; &amp;quot;-&amp;gt;&amp;quot; block
+fn             -&amp;gt; &amp;quot;fn&amp;quot; (identifier &amp;quot;.&amp;quot;)? identifier (&amp;quot;&amp;lt;&amp;quot; identifierl &amp;quot;&amp;gt;&amp;quot;)? &amp;quot;(&amp;quot; fnDeclArgl &amp;quot;)&amp;quot; &amp;quot;-&amp;gt;&amp;quot; block
+fnDeclArg          -&amp;gt; type &amp;quot;:&amp;quot; identifier
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;types-literals&quot;&gt;Types Literals&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;ebnf&quot; class=&quot;language-ebnf z-code&quot;&gt;&lt;code class=&quot;language-ebnf&quot; data-lang=&quot;ebnf&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;stype          -&amp;gt; identifier
+atype          -&amp;gt; type &amp;quot;[]&amp;quot;
+gtype          -&amp;gt; identifier &amp;quot;&amp;lt;&amp;quot; identfierl &amp;quot;&amp;gt;&amp;quot;
+otype          -&amp;gt; type &amp;quot;?&amp;quot;
+type           -&amp;gt; stype 
+                | atype 
+                | gtype
+                | otype
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;utilities-lists&quot;&gt;Utilities &#x2F; Lists&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;ebnf&quot; class=&quot;language-ebnf z-code&quot;&gt;&lt;code class=&quot;language-ebnf&quot; data-lang=&quot;ebnf&quot;&gt;&lt;span class=&quot;z-text z-plain&quot;&gt;typel           -&amp;gt; (type &amp;quot;,&amp;quot;)* type &amp;quot;,&amp;quot;? 
+
+identfierl      -&amp;gt; (identifier &amp;quot;,&amp;quot;)* type &amp;quot;,&amp;quot;?
+
+namespacel      -&amp;gt; (namespace &amp;quot;,&amp;quot;)* namespace &amp;quot;,&amp;quot;?
+
+fnDeclArgl      -&amp;gt; (fnArg &amp;quot;,&amp;quot;)* fnArg &amp;quot;,&amp;quot;?
+
+variantl        -&amp;gt; (varriant &amp;quot;,&amp;quot;)* variant &amp;quot;,&amp;quot;?
+
+exprl           -&amp;gt; (expression &amp;quot;,&amp;quot;)* expression &amp;quot;,&amp;quot;?
+
+inheritl        -&amp;gt; (inherit &amp;quot;,&amp;quot;)* inherit &amp;quot;,&amp;quot;?
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;details&gt;
+&lt;p&gt;The parser is work in progress, and you can check on the progress at &lt;a href=&quot;https:&#x2F;&#x2F;syst3mz.github.io&#x2F;lalr-generator&#x2F;&quot;&gt;LALR parser generator&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Astrophotography</title>
+		<published>2022-01-16T00:00:00+00:00</published>
+		<updated>2022-01-16T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://syst3mz.github.io/astrophotography/" type="text/html"/>
+		<id>https://syst3mz.github.io/astrophotography/</id>
+		<content type="html">&lt;p&gt;Astrophotography is the art of taking images of space. I find it to be a relaxing and very enjoyable way to give people a glimpse into the stars without requiring them to come out to a telescope (but they totally should).&lt;&#x2F;p&gt;
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+             
+&lt;img src=&quot;..&#x2F;imgs&#x2F;Moonshot.bmp&quot; alt=&quot;A zoomed in section of the moon at the edge between light and dark&quot; width=&quot;600&quot; height=&quot;400&quot; &#x2F;&gt;
+
+        &lt;td&gt;
+        &lt;td&gt;
+             
+&lt;img src=&quot;..&#x2F;imgs&#x2F;moon II.bmp&quot; alt=&quot;Wider field view of the moon, which is colorized by chromatic aberration&quot; width=&quot;600&quot; height=&quot;400&quot; &#x2F;&gt;
+
+        &lt;&#x2F;td&gt;
+    &lt;&#x2F;tr&gt;
+    &lt;tr&gt;
+        &lt;td colspan=&quot;3&quot; style=&quot;text-align: center&quot;&gt;Both images taken by me!&lt;&#x2F;td&gt;
+    &lt;&#x2F;tr&gt;
+&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;what-are-deep-sky-objects&quot;&gt;What are Deep Sky Objects?&lt;&#x2F;h2&gt;
+&lt;p&gt;Deep Sky Objects (DSO) are celestial bodies that are particularly far away or dim. These are often things like nebulae and galaxies. &lt;&#x2F;p&gt;
+&lt;h2 id=&quot;why-don-t-you-image-them-they-look-the-coolest&quot;&gt;Why don&#x27;t you image them, they look the coolest?&lt;&#x2F;h2&gt;
+&lt;p&gt;I am working on it; however due to how dim DSOs are, you need the ability to track their positions very precisely to allow more particles of light to reach the camera&#x27;s sensor. Soon I will upgrade my telescope with this capability, but I&#x27;m not there yet.&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>
