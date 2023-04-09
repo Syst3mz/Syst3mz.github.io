@@ -1,5 +1,5 @@
 +++
-title = "Proof of Work"
+title = "Thoughts on Zola"
 date = 2022-12-18
 weight = 4
 +++

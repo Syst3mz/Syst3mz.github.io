@@ -1,7 +1,7 @@
 +++
 title = "Astrophotography"
 date = 2022-01-16
-weight = 3
+weight = 4
 +++
 
 Astrophotography is the art of taking images of space. I find it to be a relaxing and very enjoyable way to give people a glimpse into the stars without requiring them to come out to a telescope (but they totally should).
