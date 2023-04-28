@@ -157,8 +157,8 @@ icon_top = "svgs svgh angu" # Back to Top Button.
 #    {url = "font/Roboto-Bold.woff2"},
 #]
 
-math = false # katex math js library, used to to render mathematical notations, requires javascript
-math_auto_render = false
+math = true # katex math js library, used to to render mathematical notations, requires javascript
+math_auto_render = true
 
 #katex_css = "https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css" # Fonts - use remote fonts
 #katex_js = "https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"
