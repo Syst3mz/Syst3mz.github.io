@@ -4,6 +4,9 @@
         <loc>https://syst3mz.github.io/</loc>
     </url>
     <url>
+        <loc>https://syst3mz.github.io/Vision/</loc>
+    </url>
+    <url>
         <loc>https://syst3mz.github.io/astrophotography/</loc>
         <lastmod>2022-01-16</lastmod>
     </url>
@@ -30,9 +33,13 @@
     </url>
     <url>
         <loc>https://syst3mz.github.io/proof-of-work/</loc>
-        <lastmod>2022-12-18</lastmod>
+        <lastmod>2023-04-09</lastmod>
     </url>
     <url>
         <loc>https://syst3mz.github.io/resume/</loc>
+    </url>
+    <url>
+        <loc>https://syst3mz.github.io/thoughts-on-zola/</loc>
+        <lastmod>2022-12-18</lastmod>
     </url>
 </urlset>
