@@ -40,17 +40,19 @@ draft = false
             <h2>Relevant Work Experience</h2>
             <ul>
                 <li>
+                    <b>Intern (MSI TEC - Summer 2023)</b>
+                    <ul>
+                        <li>Conducted an open source intelligence assessment on MSI TEC and wrote a report for senior leadership based on that assessment</li>
+                        <li>Facilitated day-to-day operations and management of networked resources</li>
+                        <li>Produced company-wide trainings on both cyber security awareness and computer networking</li>
+                    </ul>
+                </li>
+                <li>
                     <b>Penetration Testing Intern (SpyderSec - Summer 2020)</b>
                     <ul>
                         <li>Performed penetration tests against a specific target</li>
                         <li>Developed custom tools to fuzz and automatically attack endpoints</li>
-                        <li>Produced a report about vulnerabilities found</li>
-                    </ul>
-                </li>
-                <li>
-                    <b>MSITEC intern</b>
-                    <ul>
-                        <li>Developed cyber security awareness and networking Training</li>
+                        <li>Wrote a report about vulnerabilities found</li>
                     </ul>
                 </li>
             </ul>    
