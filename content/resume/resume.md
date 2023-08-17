@@ -47,6 +47,12 @@ draft = false
                         <li>Produced a report about vulnerabilities found</li>
                     </ul>
                 </li>
+                <li>
+                    <b>MSITEC intern</b>
+                    <ul>
+                        <li>Developed cyber security awareness and networking Training</li>
+                    </ul>
+                </li>
             </ul>    
             <h2>Awards</h2>
                 <ul>
