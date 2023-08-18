@@ -187,3 +187,4 @@ seo = true  # enable or disable seo-related meta tags: opengraph, facebook, twit
 mail_encode = true # This obfuscates your email address, javascript is used to decode it at page load.
 mail = "ethan.ansburg+jobs@protonmail.com"
 github = "Syst3mz"
+linkedin = "ethan-ansburg"
