@@ -31,10 +31,10 @@ And I would of course be remiss not to include the [Wikipedia](https://en.wikipe
 I wrote this simulation in the Rust programming language because Rust is fast and portable. This simulation is not the most efficient simulation of planetary orbits, and the rendering of orbital paths is particularly in-efficient. The next task to improve this project would be to speed up the line drawing significantly. For graphics, I am using the [Macroquad](https://macroquad.rs/) crate, which was perfect for this project because of its ability to compile to [WASM](https://webassembly.org/) allowing easy deployment to modern web browsers.
 
 ## How does the simulation work?
-The simulation is really a fancy equation solver. The equation I try to solve is $M = E - esin(E)$ Where $M$ is the mean anomaly, $E$ is the eccentric anomaly, and $e$ is the eccentricity. For a fantastic explanation of what these values mean, see [here](https://youtu.be/t89De819YMA?t=386). Once $M$ is found, I can use a little trigonometry ($\sin$ and $\cos$, my old enemies) and a planets semi major and minor axises to find that planet's position in space. From there its just a bit of rendering math that Macroquad spared me from to get planets going in a ellipse.
+The simulation is really a fancy equation solver. The equation I try to solve is $M = E - esin(E)$ Where $M$ is the mean anomaly, $E$ is the eccentric anomaly, and $e$ is the eccentricity. For a fantastic explanation of what these values mean, see [here](https://youtu.be/t89De819YMA?t=386). Once $M$ is found, I can use a little trigonometry ($\sin$ and $\cos$, my old enemies) and a planets semi-major and minor axes to find that planet's position in space. From there its just a bit of rendering math that Macroquad spared me from to get planets going in a ellipse.
 
 
-The major issue of this approach is finding E. Kepler himself doubted the existence of closed form solution to his equation, and to this day no such solution has been found. Right now, the best we can do is use a variety of root finding algorithms to approach a true answer, but we can't ever guarantee that we have found a "perfect" solution. I chose to use Newton's method to solve this equation because I knew it from Calculus and it is relatively simple tio implement. 
+The major issue of this approach is finding E. Kepler himself doubted the existence of closed form solution to his equation, and to this day no such solution has been found. Right now, the best we can do is use a variety of root finding algorithms to approach a true answer, but we can't ever guarantee that we have found a "perfect" solution. I chose to use Newton's method to solve this equation because I knew it from Calculus and it is relatively simple to implement. 
 
 Here is the full equation solver at the heart of the simulator:
 ```rust
@@ -79,11 +79,11 @@ Make a variable called `root`, assign `x0` to it. Rust does not let variables ch
 ```rust
 loop {
 ```
-Do whatever comes after me forever.
+The `loop` keyword in rust, says to do what comes after the `{` forever.
 ```rust
 let next_root = root - (fx(root) / dx(root));
 ```
-this is the Newton's method "part" of the algorithm. Newtons method is defined as $$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$. In english, the next guess is equal to the current guess minus f of the current guess over the derivative of f of the current guess.
+this is the Newton's method "part" of the algorithm. Newtons method is defined as $$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$ In English, the next guess is equal to the current guess minus $f$ of the current guess over the derivative of $f$ of the current guess.
 ```rust
 let delta = f64::abs(next_root - root);
 ```
