@@ -17,16 +17,18 @@ As a user, we don't want a website to store our passwords for two main reasons:
 A hash function is a procedure for taking an input (or message) of any length, and producing a fixed length output. That output is called the hash or digest of the input. When we use hash functions in the real world we want to exclusively use **good** hash functions otherwise we start to have problems quickly. Hashes exist to make it possible to distinguish between two messages without looking at the messages. 
 
 ## An Ideal Hash
-An ideal hash must:
-- Given a message $M$ and hash function $H$, $H(M)=H(M)$
-- Given a different message $D$, $H(M)\neq H(D)$
-- $H(M)$ should be as small as possible such that the first two properties hold.
+For a hash function $H$ to be considered ideal the following properties must hold.
+
+Given two messages $M$ and $D$ where $M\neq D$
+- $H(M)=H(M)$
+- $H(M)\neq H(D)$
+- The length of $H(M)$ should also be as small as possible.
   
 
 We want the first and second property because it allows us to check that two messages are the same by comparing their hashes. In the case of a website, the website can check if $H(\textrm{supplied password})=\textrm{stored password hash}$ to decide if you entered the right password, without ever knowing your password or the supplied password.
 
 
-The third property of a hash is nice because using less data to verify them message is good. Using a smaller hash is faster to compute and to send over a transmission medium.
+The third property of a hash is nice because using less data to verify the message is good. Using a smaller hash is faster to compute and to send over a transmission medium.
 
 ## What Makes a Hash Function Good?
 Unfortunately, ideal (or sometimes called perfect) hash functions don't exist in the general case. So we use good-enough hashes in the real world. A good hash function has the following properties:
@@ -34,10 +36,10 @@ Unfortunately, ideal (or sometimes called perfect) hash functions don't exist in
 - A hash's distribution is how well it spreads the input space over the output space. We want a hash function with a distribution the spreads the inputs over the entire output space. 
 - Fast (ish)
 - The hashes of two messages should be very different even if the messages are very similar.
-- Should always give the same hash or digest for the same message
+- Should always give the same hash or digest for the same message.
 
-## Difference Between a Cryptographic Hash Function and a Regular Old Hash function:
-A hash function is considered *cryptographic* if given a message's hash, it is not possible to construct the original message. Cryptographers desire this property because they can then send $\textrm{hash}(\textrm{My secret key is password123})$ across an untrusted media like the internet without worrying about their secret being found out.
+## Difference Between a Cryptographic Hash Function and a Regular Old Hash Function:
+A hash function is considered *cryptographic* if given a message's hash, it is not possible to learn anything about the original message. Cryptographers desire this property because they can then send $\textrm{hash}(\textrm{My secret key is password123})$ across an untrusted media like the internet without worrying about their secret being found out.
 
 ---
 
@@ -127,9 +129,7 @@ Problems:
 - $H_3$ doesn't change much for messages which are very similar. For example $$H_3(\textrm{AA})=30$$ $$H_3(\textrm{AB})=31$$ We would prefer that the hashes of these two (and really any two) message be very different.
 - Its trivial to find a message which collides. For instance: $$H_3(\textrm{AAAAD})=H_3(\textrm{BBBAA})=28$$
   
-- As a matter of fact $H_3$ will only ever output 100 distinct hashes $[0, 99]$. That's thanks to our $\mod 100$, in practice we use much large hashes. For instance the current gold standard hash [sha-256](https://www.movable-type.co.uk/scripts/sha256.html) uses a 256-bit output space. I asked WolframAlpha to compute how many possible hashes a 256-bit output space can represent.
-$$115,792,089,237,316,195,423,570,985,008,687,907,853,269,984,665,640,564,039,457,584,007,913,129,639,936 \textrm{ messages}$$
-I see, that is quite a bit more than 100, thanks WolframAlpha. To truly wrap your head around the size of this number [this](https://www.youtube.com/watch?v=S9JGmA5_unY) video by 3Blue1Brown is great.
+- As a matter of fact $H_3$ will only ever output 100 distinct hashes $[0, 99]$. That's thanks to our $\mod 100$, in practice we use much large hashes. For instance the current gold standard hash [sha-256](https://www.movable-type.co.uk/scripts/sha256.html) uses a 256-bit output space. A 256 bit output space can produce $$115,792,089,237,316,195,423,570,985,008,687,907,853,269,984,665,640,564,039,457,584,007,913,129,639,936$$ hashes, which is considerably more than the 100 hashes we can produce. To truly wrap your head around the size of this number [this](https://www.youtube.com/watch?v=S9JGmA5_unY) video by 3Blue1Brown is great.
 
 So would changing $\mod 100$ to $\mod 2^{256}$ fix the collision issue? No, it would just change what the colliding strings are. As a matter of fact "ZZZ" would then collide with "AAAK" $$H_3(\textrm{ZZZ})=H_3(\textrm{AAAK})=270$$
 
@@ -146,37 +146,36 @@ def fnv_1a(message:str) -> int:
 
     for byte in bytes(message, "ascii"):
         hash = hash ^ byte
-        hash = hash * FNV_PRIME
+        hash = (hash * FNV_PRIME) % 2**32
 
-    return hash 
-
+    return hash
 ```
 Starting from the top, `FNV_PRIME` is a specially chosen prime number which helps distribute the hash function through out the 32-bit output space. `FNV_OFFSET_BASIS` is a second prime chosen for similar reasons, and to make the hash of zeros non-zero.
 ```python
 for byte in bytes(message, "ascii"):
 ```
-Next, `for byte in bytes(message, "ascii"):` tells python to loop over every byte in the message and store that byte in `byte`. We get the bytes out of the message by taking the asci value of the character.
+Next, `for byte in bytes(message, "ascii"):` tells python to loop over every byte in the message and store that byte in `byte`. We get the bytes out of the message by taking the ASCII value of the character.
 
 
 Then for each byte, we do two steps:
 ```python
 hash = hash ^ byte
 ```
-set the new state of the hash to the e**x**clusive **or** (XOR) of the current hash and the current byte of the message. This is what actually compresses our message into the hash.
+Set the new state of the hash to the e**x**clusive **or** (XOR) of the current hash and the current byte of the message. This is what actually compresses our message into the hash.
 ```python
-hash = hash * FNV_PRIME
+hash = (hash * FNV_PRIME) % 2**32
 ```
-Multiply the new hash (with our new byte of data) with the FNV_PRIME constant to spread the hash throughout the output space. and of course
+Multiply the new hash (with our new byte of data) with the FNV_PRIME constant to spread the hash throughout the output space. Then, mod by $2^{32}$ to wrap back into the 32-bit integer space.
 
 This hash function is much better than any of our hash functions.
 - `fnv_1a("fruit loops")` always equals `0x812559a844c8e9d0a75f1cb34a037966d755598dcd891e5d9032f4db0107b22d4bada04f26`
 - Hashes of two messages which are very similar have different messages:
-  - `fnv_1a("fruit loops") = 0x812559a844c8e9d0a75f1cb34a037966d755598dcd891e5d9032f4db0107b22d4bada04f26`
-  - `fnv_1a("gruit loops") = 0x812559a744b7b44a11daa034bdd879ddf0e327b045099323be611037db85675b6a19bb6749`
+  - `fnv_1a("fruit loops") = 0xada04f26`
+  - `fnv_1a("gruit loops") = 0x19bb6749`
 - Collisions are hard to find.
 - This is using quite a bit of its input space.
 - Multiplication is pretty fast on computers and XOR is as fast as anything can be on a computer.
-- Unfortunately is not cryptographic, it is possible to recover some data from the hash about the message.
+- Unfortunately, FNV-1a is not a cryptographic hash function.
 
 ---
 
@@ -191,7 +190,7 @@ As well as several vestigial "contenders":
 - CRC32, a message error detection function that uses many of the same ideas as hashing
 
 ## Who Cares About Bad Hash Functions?
-Ideally you! We all uses hashes everywhere even if you don't know it. Almost every secure message you send online is protected by something called a [HMAC](https://en.wikipedia.org/wiki/HMAC) which is based on the hash function. Without it most modern secure communication could not occur. On your computer's boot is likely hashing important files to make sure they have not been corrupted. Any website which securely stores credentials uses hashes extensively.
+Ideally you! We all uses hashes everywhere even if you don't know it. Almost every secure message you send online is protected by something called a [hash-based message authentication code (HMAC)](https://en.wikipedia.org/wiki/HMAC) which is based on the hash function. Without it most modern secure communication could not occur. Without good hash functions HMACs would not exist
 
 ---
 
