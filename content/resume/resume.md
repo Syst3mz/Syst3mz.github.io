@@ -63,6 +63,7 @@ draft = false
     <tr>
         <td>
         <h2>Education</h2>
+            <p>3.0+ GPA</p>
             <ul>
                 <li>Computer Science (major) and Space (minor), University of Colorado at Boulder (Expected Graduation 2025)</li>
                 <li>Computer Science and Cyber Security (major), Hofstra University (2021-2022)</li>
