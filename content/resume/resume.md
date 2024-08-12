@@ -47,7 +47,7 @@ draft = false
             <h2>Technical Skills</h2>
             <ul>
                 <li>Proficient writing Rust, C#, C++, HTML/CSS/JS, and Python</li>
-                <li>Proficient using Linux (CentOS, Kali Linux, Ubuntu, Debian), Windows (7, 8, 10)</li>
+                <li>Proficient using Linux (Centos, Debian), Windows (7+)</li>
                 <li>Experienced with Blender, JetBrains IDEs, Adobe After Effects, Git and Github</li>
                 <li>Experienced with Batch and Bash scripting</li>
             </ul>
@@ -56,7 +56,7 @@ draft = false
                 <li>Excellent written and verbal communication skills</li>
                 <li>Strong work ethic</li>
                 <li>Fast learner</li>
-                <li>Great Team Member</li>
+                <li>Great team member</li>
             </ul>
         </td>
     </tr>
@@ -78,6 +78,7 @@ draft = false
             <div>
                 <h2>Certifications</h2>
                 <ul>
+                    <li> CompTIA Security+ (2024)</li>
                     <li>Amateur Radio Technician (2023)</li>
                     <li>TestOut PC Pro (2020)</li>
                     <li>PADI Certified Rescue SCUBA Diver (2017)</li>
@@ -86,7 +87,7 @@ draft = false
         </td>
     </tr>
     <tr>
-        <td colspan="3" style="vertical-align: top; page-break-before: always;">
+        <td colspan="3" style="vertical-align: top;">
             <h2>Clubs & Activities</h2>
             <ul>
                 <li><h4>Sounding Rockets Lab</h4>
@@ -118,3 +119,11 @@ draft = false
         </td>
     </tr>
 </table>
+<style>
+    @media print{
+        .no-print{
+            display:none;
+        }
+    }
+</style>
+<div class="no-print"><div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="96cae0a9-f12e-424e-9ca6-d2d0337f4a55" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script></div>
