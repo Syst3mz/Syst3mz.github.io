@@ -13,7 +13,7 @@ draft = false
                 <p>Tel: 720-387-1327</p>
             </td>
             <td style="text-align: right">
-                <p>E-Mail: <a href="mailto:ethan.ansburg+jobs@protonmail.com">Ethan.Ansburg+jobs@protonmail.com</a></p>
+                <p>E-Mail: <a href="mailto:jobs@ansburg.dev">jobs@ansburg.dev</a></p>
                 <p>LinkedIn: <a href="https://www.linkedin.com/in/ethan-ansburg">linkedin.com/in/ethan-ansburg</a></p> 
             </td>
         <tr>
