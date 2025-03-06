@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <script src="https://syst3mz.github.io/theme.min.js" integrity="sha384-IpIaa84kOKgkF5EJ0fD/kBe2wtIIsIB60ANGmuJxeA0dz5bSRfwBwp2/QybtQpU2"></script>
+  <link rel="stylesheet" href="https://syst3mz.github.io/abridge-switcher.css?h=d440f022b0a5c59b693b40c8fb9a106c9efda646440b4c5380564d8facc4af2f" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="preload" as="style" class="preStyle" href="https://syst3mz.github.io/katex.min.css" integrity="sha384-ZPe7yZ91iWxYumsBEOn7ieg8q/o+qh/hQpSaPow8T6BwALcXSCS6C6fSRPIAnTQs" />
+  <script defer src="https://syst3mz.github.io/abridge-bundle.min.js?h=f0e7958f46d06221e99d6d7f24150858523908ca5ca41865ddfba64bc9466f6a" integrity="sha384-nUzn1rJBMPtXHTJcP76DAl7M3pn9hUVGWBMq6iYleX0NZ/ec+/xQ6nl8iXbBLfCs"></script>
+  <script defer src="https://syst3mz.github.io/katexbundle.min.js?h=a550ba0540c37778ffcb0ddcf7968ee7c5c991905ad4db41b445e3dc4187ac40" integrity="sha384-ddSpLWE2IN4NTX956m9zVX0cUonZmEeunMpVZPgEcwmGficsSB8WtHlbuWkGPf8d"></script>
+  <meta name="base" content="https://syst3mz.github.io" />
+  <link rel="alternate" type="application/atom+xml" title="Atom/RSS Feed" href="https://syst3mz.github.io/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Hashing, the World of Message Digests | Ethan's Portfolio</title>
+  <meta name="author" content="Ethan Ansburg" />
+  <meta name="copyright" content="Ethan&#x27;s Portfolio" />
+  <meta name="description" content="A website to show off my projects and aspirations." />
+  <link rel="canonical" href="https://syst3mz.github.io/hashes/" />
+  <meta name="keywords" content="Abridge, Abridge.css, Zola, Theme, Zola Theme, getzola, Semantic Html, Fast, lightweight" />
+  <meta property="og:url" content="https://syst3mz.github.io/hashes/" />
+  <meta name="twitter:url" content="https://syst3mz.github.io/hashes/" />
+  <meta property="og:description" content="A website to show off my projects and aspirations." />
+  <meta name="twitter:description" content="A website to show off my projects and aspirations." />
+  <meta property="og:title" content="Hashing, the World of Message Digests | Ethan&#x27;s Portfolio" />
+  <meta name="twitter:title" content="Hashing, the World of Message Digests | Ethan&#x27;s Portfolio" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://syst3mz.github.io/banner.png" />
+  <meta property="og:image" content="https://syst3mz.github.io/banner.png" />
+  <meta property="og:site_name" content="Ethan&#x27;s Portfolio" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2023-09-27" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <noscript><link rel="stylesheet" href="https://syst3mz.github.io/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><h1><a href="https://syst3mz.github.io/">Ethan Ansburg</a></h1></div>
+      <div>
+        <ul><li> <h2><a href="https://syst3mz.github.io/projects/">Projects</a></h2> </li><li> <h2><a href="https://syst3mz.github.io/resume">Resume</a></h2> </li><li class="js"><i type="reset" id="mode" class="svgs adjust"></i></li></ul>
+      </div>
+      <div>
+        <form autocomplete=off class="js" name="goSearch" id="searchbox">
+          <div class="searchd">
+            <input id="searchinput" type="text" placeholder="Search" title="Search" />
+            <button type="submit" title="Search"><i class="svgs search"></i></button>
+          </div>
+          <div><div id="suggestions"></div></div>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+        <h1><a href="https://syst3mz.github.io/hashes/">Hashing, the World of Message Digests</a></h1>
+        <span class="s95"> Ethan Ansburg<span class="hpad"> </span> September 27, 2023<span class="hpad"> </span></span>
+
+    <h1 id="why-can-t-you-just-send-me-my-password">Why can't you just send me my password?</h1>
+<p>If you have ever forgotten a password to a website before, you have surely thought to your self: &quot;Why can't this website send me my password?&quot; The short answer is: &quot;the website does not know your password&quot;. That might shock you, but the website really <strong>doesn't</strong> know your password. The website knows the <em>hash</em> of your password. Hashes form the basis for a lot of security on the web and this post is dedicated to different hash functions. No prior knowledge in cryptography is assumed, but, basic math and some familiarity with the $\sum$ syntax, the modulus operator, binary representation, and exclusive or will be helpful. By the end of this post, you will know why a website can't just send you back your password.</p>
+<h1 id="why-store-hashes">Why Store Hashes?</h1>
+<p>As a user, we don't want a website to store our passwords for two main reasons:</p>
+<ul>
+<li>If the website is hacked those attackers now have a list of known good usernames and passwords.</li>
+<li>A rogue site admin could take your password and username and sign in as you! If you reuse passwords (and I know you do) that same admin could now login to all those pages which share passwords without your knowledge.</li>
+</ul>
+<h1 id="what-is-a-hash-digest-hash-function">What is a Hash / Digest / Hash Function?</h1>
+<p>A hash function is a procedure for taking an input (or message) of any length, and producing a fixed length output. That output is called the hash or digest of the input. When we use hash functions in the real world we want to exclusively use <strong>good</strong> hash functions otherwise we start to have problems quickly. Hashes exist to make it possible to distinguish between two messages without looking at the messages. </p>
+<h2 id="an-ideal-hash">An Ideal Hash</h2>
+<p>For a hash function $H$ to be considered ideal the following properties must hold.</p>
+<p>Given two messages $M$ and $D$ where $M\neq D$</p>
+<ul>
+<li>$H(M)=H(M)$</li>
+<li>$H(M)\neq H(D)$</li>
+<li>The length of $H(M)$ should also be as small as possible.</li>
+</ul>
+<p>We want the first and second property because it allows us to check that two messages are the same by comparing their hashes. In the case of a website, the website can check if $H(\textrm{supplied password})=\textrm{stored password hash}$ to decide if you entered the right password, without ever knowing your password or the supplied password.</p>
+<p>The third property of a hash is nice because using less data to verify the message is good. Using a smaller hash is faster to compute and to send over a transmission medium.</p>
+<h2 id="what-makes-a-hash-function-good">What Makes a Hash Function Good?</h2>
+<p>Unfortunately, ideal (or sometimes called perfect) hash functions don't exist in the general case. So we use good-enough hashes in the real world. A good hash function has the following properties:</p>
+<ul>
+<li>When two messages have the same hash, this is called a collision. Hash Collisions are bad and a good hash function seeks to minimize them.</li>
+<li>A hash's distribution is how well it spreads the input space over the output space. We want a hash function with a distribution the spreads the inputs over the entire output space. </li>
+<li>Fast (ish)</li>
+<li>The hashes of two messages should be very different even if the messages are very similar.</li>
+<li>Should always give the same hash or digest for the same message.</li>
+</ul>
+<h2 id="difference-between-a-cryptographic-hash-function-and-a-regular-old-hash-function">Difference Between a Cryptographic Hash Function and a Regular Old Hash Function:</h2>
+<p>A hash function is considered <em>cryptographic</em> if given a message's hash, it is not possible to learn anything about the original message. Cryptographers desire this property because they can then send $\textrm{hash}(\textrm{My secret key is password123})$ across an untrusted media like the internet without worrying about their secret being found out.</p>
+<hr />
+<h1 id="a-really-bad-hash">A (Really) Bad Hash</h1>
+<p>This is the worst hash function I come up with, but its very simple. 
+$$H(M)=1$$
+Let's start with the positives:</p>
+<ul>
+<li>This hash function is really fast, in fact its hard to imagine a faster hash function. </li>
+<li>This hash function also will always give the same hash for the same message. </li>
+<li>This hash function cannot be reversed.</li>
+</ul>
+<p>Looking at the definition of <a href="https://syst3mz.github.io/hashes/#what-makes-a-hash-function-good">good</a> we can see where this fails. </p>
+<ul>
+<li>All messages collide, which makes it useless to distinguish messages</li>
+<li>A small change to the input, has no change to the output</li>
+<li>This hash function does a poor job of spreading its outputs throughout the output space, by virtue of only having 1 output.</li>
+</ul>
+<hr />
+<h1 id="an-improved-bad-hash">An Improved Bad Hash</h1>
+<p>Addition is the first hash function one might come up with and it is bad for similar reasons. </p>
+<p>Let $\textrm{ascii()}$ be the <a rel="noopener" target="_blank" href="https://www.asciitable.com/">ascii</a> value of the character.</p>
+<p>Let $M_i$ be the $i$th character in the message. For example: </p>
+<p>if $M=\textrm{Let's go Blackhawks}$ then $M_0=L$ and $M_4=\textrm{S}$</p>
+<p>$$H_2(M)=\sum_{k=0}^{\textrm{length}(M)}\textrm{ascii}(M_k)$$</p>
+<p>This hash function is so easy its python implementation is just 5 lines:</p>
+<pre data-lang="python" class="language-python z-code"><code class="language-python" data-lang="python"><span class="z-source z-python"><span class="z-meta z-function z-python"><span class="z-storage z-type z-function z-python"><span class="z-keyword z-declaration z-function z-python">def</span></span> <span class="z-entity z-name z-function z-python"><span class="z-meta z-generic-name z-python">hash2</span></span></span><span class="z-meta z-function z-parameters z-python"><span class="z-punctuation z-section z-parameters z-begin z-python">(</span></span><span class="z-meta z-function z-parameters z-python"><span class="z-variable z-parameter z-python">msg</span></span><span class="z-meta z-function z-parameters z-annotation z-python"><span class="z-punctuation z-separator z-annotation z-parameter z-python">:</span><span class="z-meta z-qualified-name z-python"><span class="z-support z-type z-python">str</span></span></span><span class="z-meta z-function z-parameters z-python"><span class="z-punctuation z-section z-parameters z-end z-python">)</span></span><span class="z-meta z-function z-python"> </span><span class="z-meta z-function z-annotation z-return z-python"><span class="z-punctuation z-separator z-annotation z-return z-python">-&gt;</span> <span class="z-meta z-qualified-name z-python"><span class="z-support z-type z-python">int</span></span></span><span class="z-meta z-function z-python"><span class="z-punctuation z-section z-function z-begin z-python">:</span></span>
+    <span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">ret</span></span> <span class="z-keyword z-operator z-assignment z-python">=</span> <span class="z-constant z-numeric z-integer z-decimal z-python">0</span>
+    <span class="z-meta z-statement z-loop z-for z-python"><span class="z-keyword z-control z-loop z-for z-python">for</span> <span class="z-meta z-generic-name z-python">char</span> <span class="z-keyword z-control z-loop z-for z-in z-python">in</span></span><span class="z-meta z-statement z-loop z-for z-python"> <span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">msg</span></span></span><span class="z-meta z-statement z-loop z-for z-python"><span class="z-punctuation z-section z-block z-loop z-for z-python">:</span></span>
+            <span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">ret</span></span> <span class="z-keyword z-operator z-assignment z-augmented z-python">+=</span> <span class="z-meta z-function-call z-python"><span class="z-meta z-qualified-name z-python"><span class="z-variable z-function z-python"><span class="z-support z-function z-builtin z-python">ord</span></span></span></span><span class="z-meta z-function-call z-arguments z-python"><span class="z-punctuation z-section z-arguments z-begin z-python">(</span><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">char</span></span><span class="z-punctuation z-section z-arguments z-end z-python">)</span></span>
+    <span class="z-keyword z-control z-flow z-return z-python">return</span> <span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">ret</span></span>
+</span></code></pre>
+<p>$$H_2(\textrm{Paint the walls red}) = 1787$$
+$$H_2(\textrm{I love winter}) = 1240$$</p>
+<p>We are already doing better then our first hash. Two distinct messages have different hashes. Unfortunately without a tweak, we don't actually have a hash function.</p>
+<h2 id="see-if-you-can-find-why-h-2-is-not-a-hash-function">See if you can find why $H_2$ is not a hash function.</h2>
+<details>
+<summary>Hint</summary>
+Hash messages with very different lengths and see how many digits the corresponding hash has.
+</details>
+<details>
+<summary>Hint 2</summary>
+Can a hash function's output have different lengths?
+</details>
+<details>
+<summary>Answer</summary>
+$H_2$ is not a hash function because the digests that $H_2$ outputs are not fixed size! To show you this, lets hash two messages "A" and the full text of the Declaration of Independence.
+$$H_2(\textrm{A})=65$$
+$$H_2(\textrm{Declaration of Independence}) = 753,434$$
+As the size of input grows, so does the size of the digest. A hash function must output a fixed size digest, and as a result $H_2$ is not actually a hash function. 
+</details>
+<hr />
+<h1 id="an-improved-bad-hash-but-that-s-actually-a-hash-function">An Improved Bad Hash (But that's actually a hash function)</h1>
+<p>Let's adjust the hash function to be:
+$$H_3(M)=\left(\sum_{k=0}^{\textrm{length}(M)}\textrm{ascii}(M_k)\right)\mod 100$$
+or the equivalent python code:</p>
+<pre data-lang="python" class="language-python z-code"><code class="language-python" data-lang="python"><span class="z-source z-python"><span class="z-meta z-function z-python"><span class="z-storage z-type z-function z-python"><span class="z-keyword z-declaration z-function z-python">def</span></span> <span class="z-entity z-name z-function z-python"><span class="z-meta z-generic-name z-python">hash3</span></span></span><span class="z-meta z-function z-parameters z-python"><span class="z-punctuation z-section z-parameters z-begin z-python">(</span></span><span class="z-meta z-function z-parameters z-python"><span class="z-variable z-parameter z-python">msg</span></span><span class="z-meta z-function z-parameters z-annotation z-python"><span class="z-punctuation z-separator z-annotation z-parameter z-python">:</span><span class="z-meta z-qualified-name z-python"><span class="z-support z-type z-python">str</span></span></span><span class="z-meta z-function z-parameters z-python"><span class="z-punctuation z-section z-parameters z-end z-python">)</span></span><span class="z-meta z-function z-python"> </span><span class="z-meta z-function z-annotation z-return z-python"><span class="z-punctuation z-separator z-annotation z-return z-python">-&gt;</span> <span class="z-meta z-qualified-name z-python"><span class="z-support z-type z-python">int</span></span></span><span class="z-meta z-function z-python"><span class="z-punctuation z-section z-function z-begin z-python">:</span></span>
+    <span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">ret</span></span> <span class="z-keyword z-operator z-assignment z-python">=</span> <span class="z-constant z-numeric z-integer z-decimal z-python">0</span>
+    <span class="z-meta z-statement z-loop z-for z-python"><span class="z-keyword z-control z-loop z-for z-python">for</span> <span class="z-meta z-generic-name z-python">char</span> <span class="z-keyword z-control z-loop z-for z-in z-python">in</span></span><span class="z-meta z-statement z-loop z-for z-python"> <span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">msg</span></span></span><span class="z-meta z-statement z-loop z-for z-python"><span class="z-punctuation z-section z-block z-loop z-for z-python">:</span></span>
+            <span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">ret</span></span> <span class="z-keyword z-operator z-assignment z-augmented z-python">+=</span> <span class="z-meta z-function-call z-python"><span class="z-meta z-qualified-name z-python"><span class="z-variable z-function z-python"><span class="z-support z-function z-builtin z-python">ord</span></span></span></span><span class="z-meta z-function-call z-arguments z-python"><span class="z-punctuation z-section z-arguments z-begin z-python">(</span><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">char</span></span><span class="z-punctuation z-section z-arguments z-end z-python">)</span></span>
+    <span class="z-keyword z-control z-flow z-return z-python">return</span> <span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">ret</span></span> <span class="z-keyword z-operator z-arithmetic z-python">%</span> <span class="z-constant z-numeric z-integer z-decimal z-python">100</span>
+</span></code></pre>
+<p>If you don't know $x\mod n$ or in python <code>x % n</code> is saying &quot;Divide $x$ by $n$ and give me the remainder&quot;. I chose 100 to keep numbers small but in practice we could operate mod anything.</p>
+<p>Let's hash our messages again: 
+$$H_3(\textrm{A}) = 65$$
+$$H_3(\textrm{Declaration of Independence}) = 34$$
+Great, neither of our hashes have launched into infinity and even though the Declaration of Independence is much longer it still fixed in size. Now that we have returned to fixed size land, let's see if our new hash function is <em>good</em></p>
+<p>Positives: </p>
+<ul>
+<li>The distribution is pretty okay. For longer messages it will start to bounce around a lot which is good, but for short messages this hash won't be very good at distributing</li>
+<li>Summing and looking up in a ascii table is pretty fast. Mod is much slower to compute but its only done once so we will call the speed ok.</li>
+<li>This hash will always give the same value for the same message.</li>
+<li>It's practically impossible to reverse a message.</li>
+</ul>
+<p>Problems:</p>
+<ul>
+<li>
+<p>$H_3$ doesn't change much for messages which are very similar. For example $$H_3(\textrm{AA})=30$$ $$H_3(\textrm{AB})=31$$ We would prefer that the hashes of these two (and really any two) message be very different.</p>
+</li>
+<li>
+<p>Its trivial to find a message which collides. For instance: $$H_3(\textrm{AAAAD})=H_3(\textrm{BBBAA})=28$$</p>
+</li>
+<li>
+<p>As a matter of fact $H_3$ will only ever output 100 distinct hashes $[0, 99]$. That's thanks to our $\mod 100$, in practice we use much large hashes. For instance the current gold standard hash <a rel="noopener" target="_blank" href="https://www.movable-type.co.uk/scripts/sha256.html">sha-256</a> uses a 256-bit output space. A 256 bit output space can produce $$115,792,089,237,316,195,423,570,985,008,687,907,853,269,984,665,640,564,039,457,584,007,913,129,639,936$$ hashes, which is considerably more than the 100 hashes we can produce. To truly wrap your head around the size of this number <a rel="noopener" target="_blank" href="https://www.youtube.com/watch?v=S9JGmA5_unY">this</a> video by 3Blue1Brown is great.</p>
+</li>
+</ul>
+<p>So would changing $\mod 100$ to $\mod 2^{256}$ fix the collision issue? No, it would just change what the colliding strings are. As a matter of fact &quot;ZZZ&quot; would then collide with &quot;AAAK&quot; $$H_3(\textrm{ZZZ})=H_3(\textrm{AAAK})=270$$</p>
+<hr />
+<h1 id="a-good-hash-function">A Good Hash Function</h1>
+<p>This is the full algorithm for a hash algorithm called FNV-1a</p>
+<pre data-lang="python" class="language-python z-code"><code class="language-python" data-lang="python"><span class="z-source z-python"><span class="z-meta z-qualified-name z-python"><span class="z-variable z-other z-constant z-python">FNV_PRIME</span></span> <span class="z-keyword z-operator z-assignment z-python">=</span> <span class="z-constant z-numeric z-integer z-decimal z-python">16777619</span>
+<span class="z-meta z-qualified-name z-python"><span class="z-variable z-other z-constant z-python">FNV_OFFSET_BASIS</span></span> <span class="z-keyword z-operator z-assignment z-python">=</span> <span class="z-constant z-numeric z-integer z-decimal z-python">2166136261</span>
+
+<span class="z-meta z-function z-python"><span class="z-storage z-type z-function z-python"><span class="z-keyword z-declaration z-function z-python">def</span></span> <span class="z-entity z-name z-function z-python"><span class="z-meta z-generic-name z-python">fnv_1a</span></span></span><span class="z-meta z-function z-parameters z-python"><span class="z-punctuation z-section z-parameters z-begin z-python">(</span></span><span class="z-meta z-function z-parameters z-python"><span class="z-variable z-parameter z-python">message</span></span><span class="z-meta z-function z-parameters z-annotation z-python"><span class="z-punctuation z-separator z-annotation z-parameter z-python">:</span><span class="z-meta z-qualified-name z-python"><span class="z-support z-type z-python">str</span></span></span><span class="z-meta z-function z-parameters z-python"><span class="z-punctuation z-section z-parameters z-end z-python">)</span></span><span class="z-meta z-function z-python"> </span><span class="z-meta z-function z-annotation z-return z-python"><span class="z-punctuation z-separator z-annotation z-return z-python">-&gt;</span> <span class="z-meta z-qualified-name z-python"><span class="z-support z-type z-python">int</span></span></span><span class="z-meta z-function z-python"><span class="z-punctuation z-section z-function z-begin z-python">:</span></span>
+    <span class="z-meta z-qualified-name z-python"><span class="z-support z-function z-builtin z-python">hash</span></span> <span class="z-keyword z-operator z-assignment z-python">=</span> <span class="z-meta z-qualified-name z-python"><span class="z-variable z-other z-constant z-python">FNV_OFFSET_BASIS</span></span>
+
+    <span class="z-meta z-statement z-loop z-for z-python"><span class="z-keyword z-control z-loop z-for z-python">for</span> <span class="z-meta z-generic-name z-python">byte</span> <span class="z-keyword z-control z-loop z-for z-in z-python">in</span></span><span class="z-meta z-statement z-loop z-for z-python"> <span class="z-meta z-function-call z-python"><span class="z-meta z-qualified-name z-python"><span class="z-variable z-function z-python"><span class="z-support z-type z-python">bytes</span></span></span></span><span class="z-meta z-function-call z-arguments z-python"><span class="z-punctuation z-section z-arguments z-begin z-python">(</span><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">message</span></span><span class="z-punctuation z-separator z-arguments z-python">,</span> <span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-begin z-python">&quot;</span></span></span><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python">ascii<span class="z-punctuation z-definition z-string z-end z-python">&quot;</span></span></span><span class="z-punctuation z-section z-arguments z-end z-python">)</span></span></span><span class="z-meta z-statement z-loop z-for z-python"><span class="z-punctuation z-section z-block z-loop z-for z-python">:</span></span>
+        <span class="z-meta z-qualified-name z-python"><span class="z-support z-function z-builtin z-python">hash</span></span> <span class="z-keyword z-operator z-assignment z-python">=</span> <span class="z-meta z-qualified-name z-python"><span class="z-support z-function z-builtin z-python">hash</span></span> <span class="z-keyword z-operator z-arithmetic z-python">^</span> <span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">byte</span></span>
+        <span class="z-meta z-qualified-name z-python"><span class="z-support z-function z-builtin z-python">hash</span></span> <span class="z-keyword z-operator z-assignment z-python">=</span> <span class="z-meta z-group z-python"><span class="z-punctuation z-section z-group z-begin z-python">(</span><span class="z-meta z-qualified-name z-python"><span class="z-support z-function z-builtin z-python">hash</span></span> <span class="z-keyword z-operator z-arithmetic z-python">*</span> <span class="z-meta z-qualified-name z-python"><span class="z-variable z-other z-constant z-python">FNV_PRIME</span></span><span class="z-punctuation z-section z-group z-end z-python">)</span></span> <span class="z-keyword z-operator z-arithmetic z-python">%</span> <span class="z-constant z-numeric z-integer z-decimal z-python">2</span><span class="z-keyword z-operator z-arithmetic z-python">*</span><span class="z-keyword z-operator z-arithmetic z-python">*</span><span class="z-constant z-numeric z-integer z-decimal z-python">32</span>
+
+    <span class="z-keyword z-control z-flow z-return z-python">return</span> <span class="z-meta z-qualified-name z-python"><span class="z-support z-function z-builtin z-python">hash</span></span>
+</span></code></pre>
+<p>Starting from the top, <code>FNV_PRIME</code> is a specially chosen prime number which helps distribute the hash function through out the 32-bit output space. <code>FNV_OFFSET_BASIS</code> is a second prime chosen for similar reasons, and to make the hash of zeros non-zero.</p>
+<pre data-lang="python" class="language-python z-code"><code class="language-python" data-lang="python"><span class="z-source z-python"><span class="z-meta z-statement z-loop z-for z-python"><span class="z-keyword z-control z-loop z-for z-python">for</span> <span class="z-meta z-generic-name z-python">byte</span> <span class="z-keyword z-control z-loop z-for z-in z-python">in</span></span><span class="z-meta z-statement z-loop z-for z-python"> <span class="z-meta z-function-call z-python"><span class="z-meta z-qualified-name z-python"><span class="z-variable z-function z-python"><span class="z-support z-type z-python">bytes</span></span></span></span><span class="z-meta z-function-call z-arguments z-python"><span class="z-punctuation z-section z-arguments z-begin z-python">(</span><span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">message</span></span><span class="z-punctuation z-separator z-arguments z-python">,</span> <span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python"><span class="z-punctuation z-definition z-string z-begin z-python">&quot;</span></span></span><span class="z-meta z-string z-python"><span class="z-string z-quoted z-double z-python">ascii<span class="z-punctuation z-definition z-string z-end z-python">&quot;</span></span></span><span class="z-punctuation z-section z-arguments z-end z-python">)</span></span></span><span class="z-meta z-statement z-loop z-for z-python"><span class="z-punctuation z-section z-block z-loop z-for z-python">:</span></span>
+</span></code></pre>
+<p>Next, <code>for byte in bytes(message, &quot;ascii&quot;):</code> tells python to loop over every byte in the message and store that byte in <code>byte</code>. We get the bytes out of the message by taking the ASCII value of the character.</p>
+<p>Then for each byte, we do two steps:</p>
+<pre data-lang="python" class="language-python z-code"><code class="language-python" data-lang="python"><span class="z-source z-python"><span class="z-meta z-qualified-name z-python"><span class="z-support z-function z-builtin z-python">hash</span></span> <span class="z-keyword z-operator z-assignment z-python">=</span> <span class="z-meta z-qualified-name z-python"><span class="z-support z-function z-builtin z-python">hash</span></span> <span class="z-keyword z-operator z-arithmetic z-python">^</span> <span class="z-meta z-qualified-name z-python"><span class="z-meta z-generic-name z-python">byte</span></span>
+</span></code></pre>
+<p>Set the new state of the hash to the e<strong>x</strong>clusive <strong>or</strong> (XOR) of the current hash and the current byte of the message. This is what actually compresses our message into the hash.</p>
+<pre data-lang="python" class="language-python z-code"><code class="language-python" data-lang="python"><span class="z-source z-python"><span class="z-meta z-qualified-name z-python"><span class="z-support z-function z-builtin z-python">hash</span></span> <span class="z-keyword z-operator z-assignment z-python">=</span> <span class="z-meta z-group z-python"><span class="z-punctuation z-section z-group z-begin z-python">(</span><span class="z-meta z-qualified-name z-python"><span class="z-support z-function z-builtin z-python">hash</span></span> <span class="z-keyword z-operator z-arithmetic z-python">*</span> <span class="z-meta z-qualified-name z-python"><span class="z-variable z-other z-constant z-python">FNV_PRIME</span></span><span class="z-punctuation z-section z-group z-end z-python">)</span></span> <span class="z-keyword z-operator z-arithmetic z-python">%</span> <span class="z-constant z-numeric z-integer z-decimal z-python">2</span><span class="z-keyword z-operator z-arithmetic z-python">*</span><span class="z-keyword z-operator z-arithmetic z-python">*</span><span class="z-constant z-numeric z-integer z-decimal z-python">32</span>
+</span></code></pre>
+<p>Multiply the new hash (with our new byte of data) with the FNV_PRIME constant to spread the hash throughout the output space. Then, mod by $2^{32}$ to wrap back into the 32-bit integer space.</p>
+<p>This hash function is much better than any of our hash functions.</p>
+<ul>
+<li><code>fnv_1a(&quot;fruit loops&quot;)</code> always equals <code>0x812559a844c8e9d0a75f1cb34a037966d755598dcd891e5d9032f4db0107b22d4bada04f26</code></li>
+<li>Hashes of two messages which are very similar have different messages:
+<ul>
+<li><code>fnv_1a(&quot;fruit loops&quot;) = 0xada04f26</code></li>
+<li><code>fnv_1a(&quot;gruit loops&quot;) = 0x19bb6749</code></li>
+</ul>
+</li>
+<li>Collisions are hard to find.</li>
+<li>This is using quite a bit of its input space.</li>
+<li>Multiplication is pretty fast on computers and XOR is as fast as anything can be on a computer.</li>
+<li>Unfortunately, FNV-1a is not a cryptographic hash function.</li>
+</ul>
+<hr />
+<h1 id="conclusions">Conclusions</h1>
+<p>Hopefully now you are beginning to see how hard it is to make a good hash function. Literal years have gone into working out what is the best way to hash messages and we have two contenders:</p>
+<ul>
+<li>Blake2B, current fastest (good) hashing algorithm (as of late 2023)</li>
+<li>SHA-256, industry standard hash</li>
+</ul>
+<p>As well as several vestigial &quot;contenders&quot;:</p>
+<ul>
+<li>SHA1, SHA2, SHA3, predecessor versions of SHA-256. They have known efficient attacks to generate collisions</li>
+<li>MD5, an older hashing system</li>
+<li>CRC32, a message error detection function that uses many of the same ideas as hashing</li>
+</ul>
+<h2 id="who-cares-about-bad-hash-functions">Who Cares About Bad Hash Functions?</h2>
+<p>Ideally you! We all uses hashes everywhere even if you don't know it. Almost every secure message you send online is protected by something called a <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/HMAC">hash-based message authentication code (HMAC)</a> which is based on the hash function. Without it most modern secure communication could not occur. Without good hash functions HMACs would not exist</p>
+<hr />
+<h1 id="further-reading">Further Reading</h1>
+<p><a rel="noopener" target="_blank" href="https://www.youtube.com/watch?v=orIgy2MjqrA">How does SHA work?</a></p>
+
+<p><b><a href="#">Back to top</a></b></p>
+    </article>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav>
+        <ul><li class="js"><a class="m-protected" href="#ZXRoYW4uYW5zYnVyZytqb2JzQHByb3Rvbm1haWwuY29t" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a></li><li><a href="https://www.linkedin.com/in/ethan-ansburg/" target="_blank" title="LinkedIn"><i type="Button" class="svg linkedin" title="LinkedIn"></i></a></li><li><a href="https://github.com/Syst3mz/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a></li></ul>
+      </nav>
+      <p class="s90">Copyright &copy; 2025 Ethan&#x27;s Portfolio</p>
+      <nav>
+        <ul><li class="s90"> <a href="https://syst3mz.github.io/"> About </a> </li><li class="s90"> <a href="https://syst3mz.github.io/contact/"> Contact </a> </li><li class="s90"> <a href="https://syst3mz.github.io/privacy/"> Privacy </a> </li><li class="s90"> <a href="https://syst3mz.github.io/sitemap.xml" target="_blank"> Sitemap </a> </li></ul>
+      </nav>
+      <p class="s90">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> and <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer>
+<span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>
