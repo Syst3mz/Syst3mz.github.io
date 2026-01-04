@@ -11,7 +11,7 @@ Johannes Kepler was a 16th century astronomer (among many other things) from Ger
 This simulation was programmed using Kepler's laws. Click anywhere in the black box bellow to interact with the simulation. If you can't see it, grab a .exe version [here](https://github.com/Syst3mz/kepler_sim/releases/tag/1.0.0).
 
 <canvas id="glcanvas" tabindex='1' width="800" height="600"></canvas>
-<script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle.js"></script>
+<script src="https://not-fl3.github.io/miniquad-samples/gl.js"></script>
 <script>load("./../kepler_sim.wasm");</script>
 
 Use J to reduce the timescale, K to reset it to 10, L to increase the timescale.

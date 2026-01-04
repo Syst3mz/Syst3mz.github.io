@@ -24,6 +24,13 @@ draft = false
             <h2>Relevant Work Experience</h2>
             <ul>
                 <li style="list-style-type: none;">
+                    <h4><b>Junior Software Developer</b></h4>
+                    <p>bet365 - Summer 2025 - Current</p>
+                    <ul style="padding-left: 2em">
+                        <li>Lead development of tools to empower the business with insights into developer usage of AI tooling</li>
+                        <li>Managed design of Apache Kafka messages, ensuring minimal downtime and consistent payloads</li>
+                        <li>Driven solutionizing of bridge services to connect the legacy and current platform</li>
+                    </ul>
                     <h4><b>Cyber Security Intern</b></h4>
                     <p>MSI TEC - Summer 2023</p>
                     <ul style="padding-left: 2em">
@@ -32,24 +39,15 @@ draft = false
                         <li>Produced company-wide trainings on both cyber security awareness and computer networking</li>
                     </ul>
                 </li>
-                <li style="list-style-type: none;">
-                    <h4><b>Penetration Testing Intern</b></h4>
-                    <p>SpyderSec - Summer 2020</p>
-                    <ul style="padding-left: 2em">
-                        <li>Performed penetration tests against a specific target</li>
-                        <li>Developed custom tools to fuzz and automatically attack endpoints</li>
-                        <li>Wrote a report about vulnerabilities found</li>
-                    </ul>
-                </li>
             </ul>    
         </td>
         <td style="vertical-align: top">
             <h2>Technical Skills</h2>
             <ul>
-                <li>Proficient writing Rust, C#, C++, HTML/CSS/JS, and Python</li>
+                <li>Proficient writing Rust, Go, C#, C++, HTML/CSS/JS, and Python</li>
                 <li>Proficient using Linux (Centos, Debian), Windows (7+)</li>
                 <li>Experienced with Blender, JetBrains IDEs, Adobe After Effects, Git and Github</li>
-                <li>Experienced with Batch and Bash scripting</li>
+                <li>Experienced with Batch and Bash scripting, as well as Google Cloud Platform</li>
             </ul>
             <h2>Soft Skills</h2>
             <ul>
@@ -65,7 +63,7 @@ draft = false
         <h2>Education</h2>
             <p>3.0+ GPA</p>
             <ul>
-                <li>Computer Science (major) and Space (minor), University of Colorado at Boulder (Expected Graduation 2025)</li>
+                <li>Computer Science (major) and Space (minor), University of Colorado at Boulder (2022-2025)</li>
                 <li>Computer Science and Cyber Security (major), Hofstra University (2021-2022)</li>
             </ul>
              <h2>Awards</h2>
@@ -106,6 +104,15 @@ draft = false
         <td colspan="3">
             <h4>Other Work Experience</h4>
             <ul>
+                <li style="list-style-type: none;">
+                    <h4><b>Penetration Testing Intern</b></h4>
+                    <p>SpyderSec - Summer 2020</p>
+                    <ul style="padding-left: 2em">
+                        <li>Performed penetration tests against a specific target</li>
+                        <li>Developed custom tools to fuzz and automatically attack endpoints</li>
+                        <li>Wrote a report about vulnerabilities found</li>
+                    </ul>
+                </li>
                 <li style="list-style-type: none;">
                     <h4><b>Escort</b></h4>
                     <p>V-Esprit Active Adult Community - Summer 2019<p>
